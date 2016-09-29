@@ -1,0 +1,38 @@
+{
+  "name": "penultima-online",
+  "description": "A client for playing Penultima online",
+  "version": "0.0.0",
+  "homepage": "",
+  "main": "server/",
+  "keywords": [
+    "feathers"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/duke9509/penultima-online",
+  "contributors": [
+    "Stephen Cohen <scohen32@u.rochester.edu>",
+    "Andrew Peck",
+    "Jack Shih"
+  ],
+  "engines": {
+    "node": ">= 6.7.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "compression": "^1.6.2",
+    "cors": "^2.8.1",
+    "feathers": "^2.0.2",
+    "feathers-authentication": "^0.7.11",
+    "feathers-configuration": "^0.3.3",
+    "feathers-errors": "^2.4.0",
+    "feathers-hooks": "^1.5.8",
+    "feathers-rest": "^1.5.0",
+    "feathers-socketio": "^1.4.1",
+    "passport": "^0.3.2",
+    "serve-favicon": "^2.3.0",
+    "winston": "^2.2.0"
+  },
+  "devDependencies": {
+    "request": "^2.75.0"
+  }
+}
