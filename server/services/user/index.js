@@ -1,57 +1,30 @@
-'use strict';
+"use strict";
 
-const hooks = require('./hooks');
+const hooks = require("./hooks");
 
-class Service {
-  constructor(options) {
-    this.options = options || {};
-  }
+import r from "../../rethink-connection";
+import ensureTable from "../../ensure-table";
+import rdbService from "feathers-rethinkdb";
 
-  find(params) {
-    return Promise.resolve([]);
-  }
+module.exports = async function(){
+    const app = this;
 
-  get(id, params) {
-    return Promise.resolve({
-      id, text: `A new message with ID: ${id}!`
-    });
-  }
-
-  create(data, params) {
-    if(Array.isArray(data)) {
-      return Promise.all(data.map(current => this.create(current)));
-    }
-
-    return Promise.resolve(data);
-  }
-
-  update(id, data, params) {
-    return Promise.resolve(data);
-  }
-
-  patch(id, data, params) {
-    return Promise.resolve(data);
-  }
-
-  remove(id, params) {
-    return Promise.resolve({ id });
-  }
-}
-
-module.exports = function(){
-  const app = this;
+    await ensureTable(r, "users");
 
   // Initialize our service with any options it requires
-  app.use('/users', new Service());
+    app.use("/users", rdbService({
+        Model: r,
+        name: "users"
+    }));
 
   // Get our initialize service to that we can bind hooks
-  const userService = app.service('/users');
+    const userService = app.service("/users");
 
   // Set up our before hooks
-  userService.before(hooks.before);
+    userService.before(hooks.before);
 
   // Set up our after hooks
-  userService.after(hooks.after);
+    userService.after(hooks.after);
 };
 
 module.exports.Service = Service;

@@ -27,8 +27,10 @@
     "feathers-errors": "^2.4.0",
     "feathers-hooks": "^1.5.8",
     "feathers-rest": "^1.5.0",
+    "feathers-rethinkdb": "^0.2.8",
     "feathers-socketio": "^1.4.1",
     "passport": "^0.3.2",
+    "rethinkdbdash": "^2.3.23",
     "serve-favicon": "^2.3.0",
     "winston": "^2.2.0"
   },
