@@ -31,6 +31,7 @@
             4,
             {"SwitchCase": 1}
         ],
+        "no-console": 0,
         "quotes": [
             "warn",
             "double",
@@ -39,10 +40,6 @@
         "semi": [
             "error",
             "always"
-        ],
-        "no-console": [
-            "warn",
-            {"allow": ["warn", "error"]}
         ],
         "array-callback-return": "error",
         "dot-location": [
@@ -63,7 +60,7 @@
         "no-fallthrough": "error",
         "no-floating-decimal": "error",
         "no-implied-eval": "error",
-        "no-invalid-this": "error",
+        "no-invalid-this": 0,
         "no-loop-func": "error",
         "no-native-reassign": "error",
         "no-new": "error",
@@ -76,10 +73,7 @@
         "no-label-var": "error",
         "no-shadow-restricted-names": "error",
         "no-use-before-define": "error",
-        "consistent-this": [
-            "warn",
-            "self"
-        ],
+        "consistent-this": 0,
         "no-var": "error",
         "prefer-const": "warn",
         "valid-jsdoc": [

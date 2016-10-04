@@ -1,5 +1,7 @@
 import rethink from "rethinkdbdash";
 
-export default rethink({
+const r = rethink({
     db: "penultima"
 });
+
+export default r;
