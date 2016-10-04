@@ -46,7 +46,7 @@
   "babel": {
     "plugins": [
       "check-es2015-constants",
-      "es2015-block-scoping",
+      "transform-es2015-block-scoping",
       "transform-async-to-generator",
       "transform-es2015-modules-commonjs"
     ],
@@ -54,6 +54,7 @@
   },
   "scripts": {
     "build": "babel server/src -d server/dist",
-    "test": "jasmine"
+    "test": "jasmine",
+    "start": "node server/dist/index.js"
   }
 }
