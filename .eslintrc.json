@@ -1,0 +1,92 @@
+{
+    "root": true,
+    "extends": "eslint:recommended",
+    "parser": "babel-eslint",
+    "env": {
+      "browser": true,
+      "node": true,
+      "es6": true
+    },
+    "ecmaFeatures": {
+      "arrowFunctions": true,
+      "blockBindings": true,
+      "classes": true,
+      "defaultParams": true,
+      "destructuring": true,
+      "forOf": true,
+      "generators": false,
+      "modules": true,
+      "objectLiteralComputedProperties": true,
+      "objectLiteralDuplicateProperties": false,
+      "objectLiteralShorthandMethods": true,
+      "objectLiteralShorthandProperties": true,
+      "spread": true,
+      "superInFunctions": true,
+      "templateStrings": true,
+      "jsx": false
+    },
+    "rules": {
+        "indent": [
+            "warn",
+            4,
+            {"SwitchCase": 1}
+        ],
+        "quotes": [
+            "warn",
+            "double",
+            "avoid-escape"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ],
+        "no-console": [
+            "warn",
+            {"allow": ["warn", "error"]}
+        ],
+        "array-callback-return": "error",
+        "dot-location": [
+            "warn",
+            "property"
+        ],
+        "dot-notation": [
+            "error",
+            {
+                "allowKeywords": true,
+                "allowPattern": "[^\\w\\d\\$]*"
+            }
+        ],
+        "eqeqeq": "error",
+        "guard-for-in": "warn",
+        "no-caller": "error",
+        "no-eval": "error",
+        "no-fallthrough": "error",
+        "no-floating-decimal": "error",
+        "no-implied-eval": "error",
+        "no-invalid-this": "error",
+        "no-loop-func": "error",
+        "no-native-reassign": "error",
+        "no-new": "error",
+        "no-with": "error",
+        "wrap-iife": [
+            "error",
+            "inside"
+        ],
+        "strict": ["error", "never"],
+        "no-label-var": "error",
+        "no-shadow-restricted-names": "error",
+        "no-use-before-define": "error",
+        "consistent-this": [
+            "warn",
+            "self"
+        ],
+        "no-var": "error",
+        "prefer-const": "warn",
+        "valid-jsdoc": [
+            "error",
+            {
+                "requireReturn": false
+            }
+        ]
+    }
+}
