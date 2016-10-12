@@ -6,11 +6,22 @@ import "font-awesome/css/font-awesome.css";
 import * as Bluebird from "bluebird";
 Bluebird.config({warnings: false});
 
+import app from "./services";
+
 export async function configure(aurelia)
 {
     aurelia.use
         .standardConfiguration()
         .developmentLogging();
+
+    try
+    {
+        //Check to see if the user is already logged in
+        await app.authenticate();
+    }
+    catch (_) {
+        //Ignore error thrown by not being logged in
+    }
 
     await aurelia.start();
     aurelia.setRoot("views/app");
