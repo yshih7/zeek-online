@@ -22,3 +22,14 @@ body {
   font-size: 72px;
   margin-top: 50px;
 }
+
+.errorText {
+    background: rgb(232,65,65);
+    color: white;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+span.errorText {
+    display: inline-block;
+}
