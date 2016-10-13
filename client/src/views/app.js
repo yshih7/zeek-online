@@ -1,4 +1,4 @@
-import app from "./services";
+import app from "../services";
 import {Redirect} from "aurelia-router";
 
 class AuthPipelineStep
@@ -10,6 +10,7 @@ class AuthPipelineStep
         {
             return next.cancel(new Redirect("login", {notLoggedIn: true}));
         }
+        else return next();
     }
 }
 
