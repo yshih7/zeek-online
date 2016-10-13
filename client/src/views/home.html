@@ -1,6 +1,12 @@
 <template>
   <h1>Penultima Online</h1>
   Welcome!<br>
-  <a route-href="route: login">Login</a>&nbsp;&nbsp;&nbsp;
-  <a route-href="route: signup">Create Account</a>
+  <template if.bind="!loggedIn">
+      <a route-href="route: login">Login</a>&nbsp;&nbsp;&nbsp;
+      <a route-href="route: signup">Create Account</a>
+  </template>
+  <template if.bind="loggedIn">
+      You are logged in as ${displayName}!<br>
+      <a click.delegate="logout()">Log Out</a>
+  </template>
 </template>

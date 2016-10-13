@@ -33,3 +33,13 @@ body {
 span.errorText {
     display: inline-block;
 }
+
+.infoText {
+    background: rgb(65,187,232);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+span.infoText {
+    display: inline-block;
+}
