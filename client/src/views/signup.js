@@ -49,7 +49,8 @@ export class Signup
         }
         catch (err)
         {
-            if (err.type === "Conflict")
+            console.error(JSON.stringify(err));
+            if (err.name === "Conflict")
             {
                 this.error = ERR_EMAIL_TAKEN;
             }
