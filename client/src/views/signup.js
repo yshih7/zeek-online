@@ -1,7 +1,7 @@
 import {inject} from "aurelia-framework";
-import {Router} from "aurelia-router";
+import {Router, Redirect} from "aurelia-router";
 import {validate as validateEmail} from "email-validator";
-import {users} from "../services";
+import app, {users} from "../services";
 
 const ERR_BAD_EMAIL = "That's not a valid email address. Try again.";
 const ERR_PASSWORD_MISMATCH = "Your passwords don't match. Try again.";
@@ -24,6 +24,11 @@ export class Signup
     constructor(router)
     {
         this.router = router;
+    }
+
+    canActivate()
+    {
+        if (app.get("user")) return new Redirect("home");
     }
 
     async send()
