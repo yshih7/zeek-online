@@ -7,6 +7,6 @@
   </template>
   <template if.bind="loggedIn">
       You are logged in as ${displayName}!<br>
-      <a click.delegate="logout()">Log Out</a>
+      <button type="button" click.delegate="logout()">Log Out</button>
   </template>
 </template>

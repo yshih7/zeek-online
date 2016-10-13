@@ -14,4 +14,10 @@ export class Home
             this.displayName = user.displayName;
         }
     }
+
+    logout()
+    {
+        app.logout();
+        this.loggedIn = false;
+    }
 }
