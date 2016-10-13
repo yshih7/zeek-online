@@ -8,7 +8,7 @@ export default async function()
 {
     const app = this;
 
-    await ensureTable(r, "users");
+    await ensureTable(r, "users", "email");
 
     // Initialize our service with any options it requires
     app.use("/users", rdbService({
