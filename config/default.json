@@ -1,12 +1,14 @@
 {
-  "host": "localhost",
-  "port": 3030,
-  "public": "../client/dist",
-  "auth": {
-    "idField": "id",
-    "token": {
-      "secret": "t/NgDLIfJBlmk+6lshUNFppWlInUIxr7Fe5BDAezV2119xoXAUsH2KIc0jI47+s45mxvQGD2KFbUtvKEwopvNg=="
-    },
-    "local": {}
-  }
+    "host": "localhost",
+    "port": 3030,
+    "public": "../client/dist",
+    "auth": {
+        "idField": "email",
+        "successRedirect": false,
+        "failureRedirect": false,
+        "token": {
+            "secret": "t/NgDLIfJBlmk+6lshUNFppWlInUIxr7Fe5BDAezV2119xoXAUsH2KIc0jI47+s45mxvQGD2KFbUtvKEwopvNg=="
+        },
+        "local": {}
+    }
 }

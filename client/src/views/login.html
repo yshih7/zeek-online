@@ -1,0 +1,11 @@
+<template>
+    <h1>Penultima Online</h1>
+    <h2>Login</h2>
+    <span class="errorText" if.bind="error">${error}</span>
+    <span class="infoText" if.bind="info">${info}</span>
+    <form submit.delegate="send()">
+        <label>Email: <input type="email" name="email" value.bind="email"></label><br>
+        <label>Password: <input type="password" name="password" value.bind="password"></label>
+        <button type="submit">Login</button>
+    </form>
+</template>
