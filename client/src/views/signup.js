@@ -49,7 +49,7 @@ export class Signup
         }
         catch (err)
         {
-            if (err.type === "Conflict" && err.data.reason === "ERR_EMAIL_TAKEN")
+            if (err.type === "Conflict")
             {
                 this.error = ERR_EMAIL_TAKEN;
             }
