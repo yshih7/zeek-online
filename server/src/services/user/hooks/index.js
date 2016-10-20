@@ -13,7 +13,7 @@ export const before = {
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ownerField: "email"})
+        auth.restrictToOwner({ownerField: "loginName"})
     ],
     create: [
         auth.hashPassword()
@@ -22,21 +22,21 @@ export const before = {
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ownerField: "email"}),
+        auth.restrictToOwner({ownerField: "loginName"}),
         auth.hashPassword()
     ],
     patch: [
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ownerField: "email"}),
+        auth.restrictToOwner({ownerField: "loginName"}),
         auth.hashPassword()
     ],
     remove: [
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ownerField: "email"})
+        auth.restrictToOwner({ownerField: "loginName"})
     ]
 };
 

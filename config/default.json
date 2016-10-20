@@ -3,7 +3,7 @@
     "port": 3030,
     "public": "../client/dist",
     "auth": {
-        "idField": "email",
+        "idField": "loginName",
         "successRedirect": false,
         "failureRedirect": false,
         "token": {
