@@ -3,7 +3,7 @@
     <h2>Create Account</h2>
     <span class="errorText" if.bind="error">${error}</span>
     <form submit.delegate="send()">
-        Login Name must be unique, Display Name can be anything.
+        Login Name must be unique, Display Name can be anything.<br>
         <label>Login Name: <input type="text" name="loginName" value.bind="loginName"></label><br>
         <label>Password: <input type="password" name="password" value.bind="password"></label><br>
         <label>Confirm Password: <input type="password" name="passwordConfirm" value.bind="passwordConfirm"></label><br>
