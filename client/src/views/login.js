@@ -9,7 +9,7 @@ const INFO_SIGNUP_SUCCESS = "Your account has been created! You may now log in."
 @inject(Router)
 export class Login
 {
-    email = "";
+    loginName = "";
     password = "";
 
     error = "";
@@ -45,7 +45,7 @@ export class Login
         {
             await app.authenticate({
                 type: "local",
-                email: this.email,
+                loginName: this.loginName,
                 password: this.password
             });
         }
