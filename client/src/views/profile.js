@@ -1,4 +1,5 @@
 import app from "../services";
+import {Redirect} from "aurelia-router";
 
 export class profile {
 
@@ -6,6 +7,14 @@ export class profile {
     displayName = ""
     email = ""
     nationality = ""
+
+    canActivate({loginName}) {
+        const user = app.get("user");
+        if (!loginName) {
+            if (user) return new Redirect("profile", user.loginName);
+            else return new Redirect("home");
+        }
+    }
 
     activate(params) {
         const user = app.get("user");
