@@ -1,11 +1,9 @@
 import {inject} from "aurelia-framework";
 import {Router, Redirect} from "aurelia-router";
-import {validate as validateloginName} from "loginName-validator";
 import app, {users} from "../services";
 
 const ERR_BAD_loginName = "That's not a valid loginName address. Try again.";
 const ERR_PASSWORD_MISMATCH = "Your passwords don't match. Try again.";
-const ERR_loginName_TAKEN = "That loginName's already in use. Try again.";
 const ERR_EMPTY_FIELDS = "Please fill out all fields";
 const ERR_GENERIC = "Something went wrong. Please try again later.";
 
@@ -36,12 +34,6 @@ export class Signup
         if (!this.loginName || !this.password || !this.passwordConfirm || !this.displayName)
         {
             this.error = ERR_EMPTY_FIELDS;
-            return;
-        }
-
-        if (!validateloginName(this.loginName))
-        {
-            this.error = ERR_BAD_loginName;
             return;
         }
 
