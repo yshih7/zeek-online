@@ -8,6 +8,8 @@ export class profile {
     email = "Loading..."
     nationality = "Loading..."
 
+    self = false;   //whether or not you are looking at your own profile
+
     canActivate({loginName}) {
         const user = app.get("user");
         if (!loginName) {
@@ -21,35 +23,44 @@ export class profile {
         if (params) {
             this.loginName = params.loginName;
         }
-        /*
+
+
         if (user) {
-            this.displayName = user.displayName;
-            if (user.email) {
-                this.email = user.email;
-            } else {
-                this.email = "Not shown";
+            if (this.loginName = user.loginName) {
+                this.displayName = user.displayName;
+                if (user.email) {
+                    this.email = user.email;
+                } else {
+                    this.email = "Not shown";
+                }
+                if (user.nationality) {
+                    this.nationality = user.nationality;
+                } else {
+                    this.nationality = "Not shown";
+                }
             }
-            if (user.nationality) {
-                this.nationality = user.nationality;
-            } else {
-                this.nationality = "Not shown";
+        } else {
+            try {
+                const lookup = await users.get(this.loginName);
+
+                this.displayName = lookup.displayName;
+
+                if (lookup.email) {
+                    this.email = user.email;
+                } else {
+                    this.email = "Not shown";
+                }
+
+                if (lookup.nationality) {
+                    this.nationality = lookup.nationality;
+                } else {
+                    this.nationality = "Not shown";
+                }
+
+            } catch (err) {
+                console.error(JSON.stringify(err));
+                this.error = "That user does not exist";
             }
-        }
-        */
-        try {
-            const lookup = await users.get(this.loginName);
-
-            this.displayName = lookup.displayName;
-
-            if (lookup.email) {
-                this.email = user.email;
-            } else {
-                this.email = "Not shown"
-            }
-
-            
-        } catch (err) {
-            console.error(JSON.stringify(err));
         }
     }
 
