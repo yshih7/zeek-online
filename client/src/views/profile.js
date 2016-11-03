@@ -25,21 +25,20 @@ export class profile {
         }
 
 
-        if (user) {
-            if (this.loginName = user.loginName) {
-                this.displayName = user.displayName;
-                if (user.email) {
-                    this.email = user.email;
-                } else {
-                    this.email = "Not shown";
-                }
-                if (user.nationality) {
-                    this.nationality = user.nationality;
-                } else {
-                    this.nationality = "Not shown";
-                }
+        if (user && this.loginName === user.loginName) {
+            this.displayName = user.displayName;
+            if (user.email) {
+                this.email = user.email;
+            } else {
+                this.email = "Not shown";
+            }
+            if (user.nationality) {
+                this.nationality = user.nationality;
+            } else {
+                this.nationality = "Not shown";
             }
         } else {
+            console.log("Ding!");
             try {
                 const lookup = await users.get(this.loginName);
 
