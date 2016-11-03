@@ -1,12 +1,12 @@
-import app from "../services";
+import app, {users} from "../services";
 import {Redirect} from "aurelia-router";
 
 export class profile {
 
-    loginName = ""
-    displayName = ""
-    email = ""
-    nationality = ""
+    loginName = "Loading..."
+    displayName = "Loading..."
+    email = "Loading..."
+    nationality = "Loading..."
 
     canActivate({loginName}) {
         const user = app.get("user");
@@ -16,11 +16,12 @@ export class profile {
         }
     }
 
-    activate(params) {
+    async activate(params) {
         const user = app.get("user");
         if (params) {
             this.loginName = params.loginName;
         }
+        /*
         if (user) {
             this.displayName = user.displayName;
             if (user.email) {
@@ -33,6 +34,22 @@ export class profile {
             } else {
                 this.nationality = "Not shown";
             }
+        }
+        */
+        try {
+            const lookup = await users.get(this.loginName);
+
+            this.displayName = lookup.displayName;
+
+            if (lookup.email) {
+                this.email = user.email;
+            } else {
+                this.email = "Not shown"
+            }
+
+            
+        } catch (err) {
+            console.error(JSON.stringify(err));
         }
     }
 
