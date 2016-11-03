@@ -45,7 +45,7 @@ export class Login
         {
             await app.authenticate({
                 type: "local",
-                email: this.loginName,
+                loginName: this.loginName,
                 password: this.password
             });
         }
