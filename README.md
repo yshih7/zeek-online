@@ -1,5 +1,5 @@
-# penultima-online
-A client for playing Penultima online
+# zeek-online
+A client for playing Zeek the Geek online
 
 ## Project structure
 The server and client code are in separate, nested projects for simplicity
