@@ -10,10 +10,12 @@ export const before = {
         auth.restrictToAuthenticated()
     ],
     get: [
+        /*
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
         auth.restrictToOwner({ownerField: "loginName"})
+        */
     ],
     create: [
         auth.hashPassword()
