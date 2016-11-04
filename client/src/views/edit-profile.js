@@ -36,12 +36,12 @@ export class editProfile {
             if(!this.hideEmail) {
                 data.email = this.email;
             } else {
-                data.email = undefined;
+                data.email = null;
             }
             if (!this.hideNationality) {
                 data.nationality = this.nationality;
             } else {
-                data.nationality = undefined;
+                data.nationality = null;
             }
             console.log(JSON.stringify(data));
             await users.patch(this.loginName, data);
