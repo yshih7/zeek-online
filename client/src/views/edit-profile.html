@@ -1,3 +1,19 @@
 <template>
-    Edit Profile
+    <h1>Edit Profile</h1>
+
+    <a route-href="route: home">Home</a><br>
+    <span class="errorText" if.bind="error">${error}</span>
+    <span class="infoText" if.bind="info">${info}</span><br>
+
+    Currently logged in as: ${loginName}<br>
+    Display Name: <input type="text" value.bind="displayName"><br>
+
+    Email: <input type="text" value.bind="email">&nbsp;&nbsp;&nbsp;
+    <label><input type="checkbox" checked.bind="hideEmail">Do not show</label><br>
+    
+    Nationality: <input type="text" value.bind="nationality">&nbsp;&nbsp;&nbsp;
+    <label><input type="checkbox" checked.bind="hideNationality">Do not show</label><br>
+
+    <button type="button" click.delegate="save()">Save Changes</button>
+
 </template>
