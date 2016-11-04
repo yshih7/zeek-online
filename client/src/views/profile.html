@@ -1,10 +1,8 @@
 <template>
-    <h1>Profile</h1>
-    <a route-href="route: home">Home</a><br><br>
-    <span class="errorText" if.bind="error">${error}</span>
+    <a route-href="route: home">Home</a>
+    <span class="errorText" if.bind="error">${error}</span><br>
     <template if.bind="!error">
-        Login Name given: ${loginName}<br>
-        Display name: ${displayName}<br>
+        <h1>${displayName}'s Profile</h1>
         Email: ${email}<br>
         Nationality: ${nationality}<br>
         <a if.bind="self" route-href="route: editProfile">Edit</a>
