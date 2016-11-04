@@ -38,7 +38,6 @@ export class profile {
                 this.nationality = "Not shown";
             }
         } else {
-            console.log("Ding!");
             try {
                 const lookup = await users.get(this.loginName);
 
