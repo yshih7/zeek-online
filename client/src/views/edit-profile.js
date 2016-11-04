@@ -16,6 +16,7 @@ export class editProfile {
         const user = app.get("user");
         this.loginName = user.loginName;
         this.displayName = user.displayName;
+        
         if (user.email) {
             this.email = user.email;
             this.hideEmail = false;
@@ -33,6 +34,7 @@ export class editProfile {
     async save() {
         try {
             var data = {"displayName":this.displayName};
+
             if(!this.hideEmail) {
                 data.email = this.email;
             } else {
@@ -43,7 +45,7 @@ export class editProfile {
             } else {
                 data.nationality = null;
             }
-            console.log(JSON.stringify(data));
+
             await users.patch(this.loginName, data);
 
             this.error = "";

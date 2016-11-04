@@ -27,42 +27,31 @@ export class profile {
 
         if (user && this.loginName === user.loginName) {
             this.self = true;
-            this.displayName = user.displayName;
+        } else {
+            this.self = false;
+        }
+        try {
+            const lookup = await users.get(this.loginName);
 
-            if (user.email) {
+            this.displayName = lookup.displayName;
+
+            if (lookup.email) {
                 this.email = user.email;
             } else {
                 this.email = "Not shown";
             }
-            if (user.nationality) {
-                this.nationality = user.nationality;
+
+            if (lookup.nationality) {
+                this.nationality = lookup.nationality;
             } else {
                 this.nationality = "Not shown";
             }
-        } else {
-            this.self = false;
-            try {
-                const lookup = await users.get(this.loginName);
 
-                this.displayName = lookup.displayName;
-
-                if (lookup.email) {
-                    this.email = user.email;
-                } else {
-                    this.email = "Not shown";
-                }
-
-                if (lookup.nationality) {
-                    this.nationality = lookup.nationality;
-                } else {
-                    this.nationality = "Not shown";
-                }
-
-            } catch (err) {
-                console.error(JSON.stringify(err));
-                this.error = "That user does not exist";
-            }
+        } catch (err) {
+            console.error(JSON.stringify(err));
+            this.error = "That user does not exist";
         }
+
     }
 
 }
