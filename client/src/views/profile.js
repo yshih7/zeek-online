@@ -26,7 +26,9 @@ export class profile {
 
 
         if (user && this.loginName === user.loginName) {
+            this.self = true;
             this.displayName = user.displayName;
+
             if (user.email) {
                 this.email = user.email;
             } else {
@@ -38,6 +40,7 @@ export class profile {
                 this.nationality = "Not shown";
             }
         } else {
+            this.self = false;
             try {
                 const lookup = await users.get(this.loginName);
 
