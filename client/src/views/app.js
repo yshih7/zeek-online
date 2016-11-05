@@ -22,7 +22,9 @@ export class App
         config.map([
             {route: ["", "home"], name: "home", moduleId: "./home", nav: true, title: "Home", settings: {auth: false}},
             {route: "login", name: "login", moduleId: "./login", nav: false, title: "Login", settings: {auth: false}},
+						{route: "create", name: "create", moduleId: "./create", nav: true, title: "Create Map", settings: {auth: true}},
             {route: "signup", name: "signup", moduleId: "./signup", nav: false, title: "Create Account", settings: {auth: false}}
+						
         ]);
 
         config.addAuthorizeStep(new AuthPipelineStep());
