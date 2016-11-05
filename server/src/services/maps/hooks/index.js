@@ -1,5 +1,6 @@
 import {setCreator} from "../../../hooks";
 import hooks from "feathers-hooks";
+import {setCreatedAt} from "feathers-hooks-common";
 import {hooks as auth} from "feathers-authentication";
 
 export const before = {
@@ -11,7 +12,7 @@ export const before = {
         auth.populateUser(),
         auth.restrictToAuthenticated(),
         setCreator(),
-        hooks.setCreatedAt()
+        setCreatedAt()
     ],
     update: [
         hooks.disable(null)
