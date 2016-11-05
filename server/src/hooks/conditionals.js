@@ -37,8 +37,8 @@ export const elseRunIf = (condFn, ...hooksToRun) => async hook =>
 {
     if (hook.params.__failedCondition__)
     {
-        hook = await runIf(condFn, ...hooksToRun).call(this, hook);
         hook.params.__failedCondition__ = false;
+        hook = await runIf(condFn, ...hooksToRun).call(this, hook);
     }
 
     return hook;
