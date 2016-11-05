@@ -1,7 +1,8 @@
 import {setCreator} from "../../../hooks";
 import hooks from "feathers-hooks";
-import {setCreatedAt} from "feathers-hooks-common";
+import {setCreatedAt, validate} from "feathers-hooks-common";
 import {hooks as auth} from "feathers-authentication";
+import validator from "../validation";
 
 export const before = {
     all: [],
@@ -11,6 +12,7 @@ export const before = {
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
+        validate(validator()),
         setCreator(),
         setCreatedAt()
     ],
@@ -21,7 +23,8 @@ export const before = {
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated(),
-        auth.restrictToOwner({ownerField: "creator"})
+        auth.restrictToOwner({ownerField: "creator"}),
+        validate(validator({loose: true}))
     ],
     remove: [
         auth.verifyToken(),
