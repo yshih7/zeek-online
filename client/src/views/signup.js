@@ -1,18 +1,16 @@
 import {inject} from "aurelia-framework";
 import {Router, Redirect} from "aurelia-router";
-import {validate as validateEmail} from "email-validator";
 import app, {users} from "../services";
 
-const ERR_BAD_EMAIL = "That's not a valid email address. Try again.";
+const ERR_NAME_TAKEN = "That loginName's already in use. Try again.";
 const ERR_PASSWORD_MISMATCH = "Your passwords don't match. Try again.";
-const ERR_EMAIL_TAKEN = "That email's already in use. Try again.";
 const ERR_EMPTY_FIELDS = "Please fill out all fields";
 const ERR_GENERIC = "Something went wrong. Please try again later.";
 
 @inject(Router)
 export class Signup
 {
-    email = "";
+    loginName = "";
     password = "";
     passwordConfirm = "";
     displayName = "";
@@ -33,15 +31,9 @@ export class Signup
 
     async send()
     {
-        if (!this.email || !this.password || !this.passwordConfirm || !this.displayName)
+        if (!this.loginName || !this.password || !this.passwordConfirm || !this.displayName)
         {
             this.error = ERR_EMPTY_FIELDS;
-            return;
-        }
-
-        if (!validateEmail(this.email))
-        {
-            this.error = ERR_BAD_EMAIL;
             return;
         }
 
@@ -54,7 +46,7 @@ export class Signup
         try
         {
             await users.create({
-                email: this.email,
+                loginName: this.loginName,
                 password: this.password,
                 displayName: this.displayName
             });
@@ -64,7 +56,7 @@ export class Signup
             console.error(JSON.stringify(err));
             if (err.name === "Conflict")
             {
-                this.error = ERR_EMAIL_TAKEN;
+                this.error = ERR_NAME_TAKEN;
             }
             else
             {

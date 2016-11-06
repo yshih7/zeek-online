@@ -8,13 +8,13 @@ export default async function()
 {
     const app = this;
 
-    await ensureTable(r, "users", "email");
+    await ensureTable(r, "users", "loginName");
 
     // Initialize our service with any options it requires
     app.use("/users", rdbService({
         Model: r,
         name: "users",
-        id: "email"
+        id: "loginName"
     }));
 
     // Get our initialize service to that we can bind hooks
