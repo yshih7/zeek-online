@@ -61,7 +61,7 @@
         "no-floating-decimal": "error",
         "no-implied-eval": "error",
         "no-invalid-this": 0,
-        "no-loop-func": "error",
+        "no-loop-func": 0,
         "no-native-reassign": "error",
         "no-new": "error",
         "no-with": "error",
