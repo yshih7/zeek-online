@@ -1,5 +1,5 @@
 {
-  "host": "penultima-online-app.feathersjs.com",
+  "host": "zeek-online-app.feathersjs.com",
   "port": 80,
   "public": "../client/dist",
   "auth": {

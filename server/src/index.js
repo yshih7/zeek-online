@@ -1,8 +1,8 @@
 import r from "./rethink-connection";
 
 //Make sure the database exists and start the server
-r.dbList().contains("penultima")
-    .do(dbExists => r.branch(dbExists, {created: 0}, r.dbCreate("penultima"))).run()
+r.dbList().contains("zeek")
+    .do(dbExists => r.branch(dbExists, {created: 0}, r.dbCreate("zeek"))).run()
     .then(() =>
     {
         const app = require("./app").default;

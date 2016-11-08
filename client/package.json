@@ -1,8 +1,8 @@
 {
-  "name": "penultima-online-client",
+  "name": "zeek-online-client",
   "version": "0.0.0",
-  "description": "Penultima Online front-end.",
-  "productName": "Penultima Online",
+  "description": "Zeek Online front-end.",
+  "productName": "Zeek Online",
   "scripts": {
     "test": "cross-env NODE_ENV=test ./node_modules/karma/bin/karma start test/karma.conf.js",
     "clean": "rimraf dist",
@@ -11,7 +11,7 @@
     "build:prod": "cross-env NODE_ENV=production npm run webpack -- --progress --profile",
     "webpack": "cross-env ./node_modules/.bin/webpack"
   },
-  "repository": "https://github.com/duke9509/penultima-online",
+  "repository": "https://github.com/duke9509/zeek-online",
   "license": "MIT",
   "aurelia": {
     "build": {
@@ -34,7 +34,6 @@
     "aurelia-templating-resources": "^1.0.0",
     "aurelia-templating-router": "^1.0.0",
     "bluebird": "^3.4.1",
-    "email-validator": "^1.0.7",
     "feathers": "^2.0.2",
     "feathers-authentication": "^0.7.11",
     "feathers-hooks": "^1.5.8",

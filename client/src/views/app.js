@@ -18,7 +18,7 @@ export class App
 {
     configureRouter(config, router)
     {
-        config.title = "Penultima Online";
+        config.title = "Zeek Online";
         config.map([
             {route: ["", "home"], name: "home", moduleId: "./home", nav: true, title: "Home", settings: {auth: false}},
             {route: "login", name: "login", moduleId: "./login", nav: false, title: "Login", settings: {auth: false}},
