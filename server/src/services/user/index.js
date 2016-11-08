@@ -1,4 +1,4 @@
-import * as hooks from "./hooks";
+    import * as hooks from "./hooks";
 
 import r from "../../rethink-connection";
 import ensureTable from "../../ensure-table";

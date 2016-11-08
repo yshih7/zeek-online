@@ -7,7 +7,5 @@ export default function()
 
     const config = app.get("auth");
 
-
-
     app.configure(authentication(config));
 }

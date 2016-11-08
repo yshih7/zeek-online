@@ -9,6 +9,6 @@
         "token": {
             "secret": "t/NgDLIfJBlmk+6lshUNFppWlInUIxr7Fe5BDAezV2119xoXAUsH2KIc0jI47+s45mxvQGD2KFbUtvKEwopvNg=="
         },
-        "local": {"usernameField": "loginName"}
+        "local": {"usernameField":"loginName"}
     }
 }

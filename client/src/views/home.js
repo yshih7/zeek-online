@@ -1,9 +1,19 @@
+import {inject} from "aurelia-framework";
+import {Router} from "aurelia-router";
 import app from "../services";
 
+@inject(Router)
 export class Home
 {
     loggedIn = false;
     displayName = "";
+    loginName = "";
+
+    router;
+
+    constructor(router) {
+        this.router = router;
+    }
 
     activate()
     {
@@ -12,6 +22,7 @@ export class Home
         {
             this.loggedIn = true;
             this.displayName = user.displayName;
+            this.loginName = user.loginName;
         }
     }
 
@@ -19,5 +30,9 @@ export class Home
     {
         app.logout();
         this.loggedIn = false;
+    }
+
+    search(lookup) {
+        this.router.navigateToRoute('profile', {loginName: lookup})
     }
 }
