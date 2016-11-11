@@ -53,7 +53,7 @@
     "sourceMaps": "inline"
   },
   "scripts": {
-    "build": "babel server/src -d server/dist",
+    "build": "babel server/src -d server/dist && babel shared -d server/dist/shared",
     "test": "jasmine",
     "start": "node server/dist/index.js"
   }
