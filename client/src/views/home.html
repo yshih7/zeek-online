@@ -6,8 +6,10 @@
       <a route-href="route: signup">Create Account</a>
   </template>
   <template if.bind="loggedIn">
-      You are logged in as ${displayName}!<br>
-			<a route-href="route: create">Create Map</a><br>
-      <button type="button" click.delegate="logout()">Log Out</button>
+      You are logged in as ${displayName}!&nbsp;&nbsp;&nbsp;
+      <a route-href="route: profile; params.bind: { loginName: loginName}">Profile</a>&nbsp;&nbsp;&nbsp;
+      <a route-href="route: create">Create Map</a><br>
+      <button type="button" click.delegate="logout()">Log Out</button><br>
+      Lookup a user: <input type="text" value.bind="lookup"><button type="button" click.delegate="search(lookup)">Search</button><br>
   </template>
 </template>

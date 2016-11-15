@@ -2,8 +2,8 @@ import {inject} from "aurelia-framework";
 import {Router, Redirect} from "aurelia-router";
 import app, {users} from "../services";
 
-const ERR_NAME_TAKEN = "That loginName's already in use. Try again.";
 const ERR_PASSWORD_MISMATCH = "Your passwords don't match. Try again.";
+const ERR_LOGIN_TAKEN = "That Login Name is already in use. Try again.";
 const ERR_EMPTY_FIELDS = "Please fill out all fields";
 const ERR_GENERIC = "Something went wrong. Please try again later.";
 
@@ -56,7 +56,7 @@ export class Signup
             console.error(JSON.stringify(err));
             if (err.name === "Conflict")
             {
-                this.error = ERR_NAME_TAKEN;
+                this.error = ERR_LOGIN_TAKEN;
             }
             else
             {
