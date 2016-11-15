@@ -1,5 +1,7 @@
 const validate = ({loose = false} = {}) => async map =>
 {
+		console.log("Validating map");
+
     //Simple hand-written validation because we have such a simple service
     const errors = [];
 
@@ -37,6 +39,7 @@ const validate = ({loose = false} = {}) => async map =>
     }
     else if (!loose) errors.push("A map must have map data");
 
+		console.log(`Errors: ${errors}`);
     if (errors.length !== 0) throw errors;
     return map;
 };
