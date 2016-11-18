@@ -56,7 +56,7 @@ class Piece{
   function update(board, ownPos, dt)
   {
     mutation;
-    //TODO updates the board
+    //TODO Does nothing for now
     return mutation;
   }
 

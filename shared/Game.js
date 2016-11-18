@@ -29,7 +29,6 @@ class Game{
       //processMutation process that list
       processMutation(move(board, playerPos, Input.dir));
     }else if(Input.type === "reset"){
-      //TODO Need to check if this protocol is correct
       score = 0;
       bonus = 0;
       build();
