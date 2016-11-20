@@ -12,6 +12,7 @@ export default class Game
     initialState; //Initial board state, useful for restarting the board
     length;       //Length of the board
     width;        //Width of the board
+    won = false;  //Has the game been won?
 
     get player()
     {
@@ -32,11 +33,11 @@ export default class Game
     //                  Reset: Reset the board state
     input(input)
     {
-        if (input.type === "move")
+        if (input.type === "MOVE")
         {
             //Player#move() generates a list of mutations to the board
             //processMutations processes that list
-            this.processMutations(this.player.move(this.board, this.playerPos, input.dir));
+            this.player && this.processMutations(this.player.move(this.board, this.playerPos, input.dir));
         }
     }
 
@@ -77,31 +78,39 @@ export default class Game
     //Helper function for processing the list of mutations that
     //is generated from muta_gen() method contained in Piece class
     //Processed here in case control flow is required
-    processMutation(mutaList)
+    processMutations(mutaList)
     {
-        for(const k of mutaList)
+        for(const muta of mutaList)
         {
-            if (k.type === "moved")
+            switch (muta.type)
             {
-                this.board[k.new_loc[0]][k.new_loc[1]] = this.board[k.old_loc[0]][k.old_loc[1]];
-                this.board[k.old_loc[0]][k.old_loc[1]] = null;
-            }
-            if (k.type === "deleted")
-            {
-                this.board[k.loc[0]][k.loc[1]].type = null;
-            }
-            if(k.type === "increment")
-            {
-                this.score += k.score;
-            }
-            if (k.type === "win")
-            {
-                //TODO make win or lose do something
-            }
-            if(k.type==="inventory")
-            {
-                //Doesn't do anything right now, it is directly
-                //manipulated in piece method
+                case "MOVE":
+                    this.board[muta.oldPos[0]][muta.oldPos[1]] = this.board[muta.newPos[0]][muta.newPos[1]];
+                    this.board[muta.oldPos[0]][muta.oldPos[1]] = null;
+                    break;
+                case "DELETE":
+                    this.board[muta.pos[0]][muta.pos[1]] = null;
+
+                    if (muta.pos[0] === this.playerPos[0] && muta.pos[1] === this.playerPos[1])
+                    {
+                        this.playerPos = null;
+                    }
+                    break;
+                case "INCREMENT_SCORE":
+                    this.score += muta.amt;
+                    break;
+                case "WIN":
+                    this.won = true;
+                    break;
+                case "ADD_INVENTORY":
+                    this.player.inventory.add(muta.item);
+                    break;
+                case "DELETE_INVENTORY":
+                    this.player.inventory.delete(muta.item);
+                    break;
+                case "CHANGE":
+                    this.board[muta.pos[0]][muta.pos[1]] = new Piece(muta.piece);
+                    break;
             }
         }
     }
