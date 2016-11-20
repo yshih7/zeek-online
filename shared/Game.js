@@ -2,6 +2,7 @@ import Piece from "./piece";
 import Player from "./player";
 
 const INIT_BONUS = 10000; //TODO: Figure out how much this should start at
+const MS_PER_BONUS_POINT = 100; //10pts a second
 
 export default class Game
 {
@@ -30,7 +31,6 @@ export default class Game
 
     //Function to check the input from user
     //Possible inputs:  Move: Player piece attempts to move
-    //                  Reset: Reset the board state
     input(input)
     {
         if (input.type === "MOVE")
@@ -100,6 +100,7 @@ export default class Game
                     this.score += muta.amt;
                     break;
                 case "WIN":
+                    this.score += this.bonus;
                     this.won = true;
                     break;
                 case "ADD_INVENTORY":
@@ -111,6 +112,21 @@ export default class Game
                 case "CHANGE":
                     this.board[muta.pos[0]][muta.pos[1]] = new Piece(muta.piece);
                     break;
+            }
+        }
+    }
+
+    //We need to standardize on what units this will be in. Probably milliseconds
+    update(dt)
+    {
+        this.bonus -= Math.floor(dt / MS_PER_BONUS_POINT);
+
+        this.player.update(this.board, this.playerPos, dt);
+        for (let i = 0; i < this.board.length; i++)
+        {
+            for (let j = 0; j < this.board[i].length; j++)
+            {
+                this.board[i][j].update(this.board, [i, j], dt);
             }
         }
     }
