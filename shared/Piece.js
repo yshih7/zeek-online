@@ -50,8 +50,8 @@ export default class Piece
     constructor(type){
     //Assign the type of piece and associate URL of sprite to it
     //TODO Can we reference it as name value pairs?
-        this.type = Piece.typeList.enum[type];
-        this.sprite = Piece.spriteList.enum[type];
+        this.type = Piece.typeList[type];
+        this.sprite = Piece.spriteList[type];
     }
 
     //Piece update its status, for tulip?
