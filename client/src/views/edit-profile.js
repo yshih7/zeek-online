@@ -16,7 +16,7 @@ export class editProfile {
         const user = app.get("user");
         this.loginName = user.loginName;
         this.displayName = user.displayName;
-        
+
         if (user.email) {
             this.email = user.email;
             this.hideEmail = false;
@@ -47,6 +47,8 @@ export class editProfile {
             }
 
             await users.patch(this.loginName, data);
+
+            await app.authenticate();
 
             this.error = "";
             this.info = "Information saved!"
