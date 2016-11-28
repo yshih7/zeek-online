@@ -1,5 +1,5 @@
-//TODO is this import necessary?
 import Piece from "./piece";
+import * as mutations from "./mutations";
 
 export default class Player extends Piece{
     inventory = new Set();
@@ -24,7 +24,7 @@ export default class Player extends Piece{
             //If not, call collide() onto that object
             //Add to mutation list
             if(board[ownPos[0]-1][ownPos[1]] === "X"){
-                mutation.push(this.muta_gen("moved", [ownPos[0], ownPos[1]], [ownPos[0]-1, ownPos[1]]));
+                mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0]-1, ownPos[1]]));
                 newPos = [ownPos[0]-1, ownPos[1]];
             }else{
                 //Get the mutation from calling collide
@@ -34,7 +34,7 @@ export default class Player extends Piece{
                                                                    [ownPos[0]-1, ownPos[1]], dir);
                 if(muta){
                     mutation.push(muta);
-                    if(muta.type === "moved"){
+                    if(muta.type === "MOVE"){
                         newPos = [ownPos[0]-1, ownPos[1]];
                     }
                 }
@@ -44,14 +44,14 @@ export default class Player extends Piece{
                 return [];
             }
             if(board[ownPos[0]+1][ownPos[1]] === "X"){
-                mutation.push(this.muta_gen("moved", [ownPos[0], ownPos[1]], [ownPos[0]+1, ownPos[1]]));
+                mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0]+1, ownPos[1]]));
                 newPos = [ownPos[0]+1, ownPos[1]];
             }else{
                 const muta = board[ownPos[0]+1, ownPos[1]].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0]+1, ownPos[1]], dir);
                 if(muta){
                     mutation.push(muta);
-                    if(muta.type === "moved"){
+                    if(muta.type === "MOVE"){
                         newPos = [ownPos[0]+1, ownPos[1]];
                     }
                 }
@@ -61,14 +61,14 @@ export default class Player extends Piece{
                 return [];
             }
             if(board[ownPos[0]][ownPos[1]-1] === "X"){
-                mutation.push(this.muta_gen("moved", [ownPos[0], ownPos[1]], [ownPos[0], ownPos[1]-1]));
+                mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0], ownPos[1]-1]));
                 newPos = [ownPos[0], ownPos[1]-1];
             }else{
                 const muta = board[ownPos[0], ownPos[1]-1].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0], ownPos[1]-1], dir);
                 if(muta){
                     mutation.push(muta);
-                    if(muta.type === "moved"){
+                    if(muta.type === "MOVE"){
                         newPos = [ownPos[0], ownPos[1]-1];
                     }
                 }
@@ -78,14 +78,14 @@ export default class Player extends Piece{
                 return [];
             }
             if(board[ownPos[0]][ownPos[1]+1] === "X"){
-                mutation.push(this.muta_gen("moved", [ownPos[0], ownPos[1]], [ownPos[0], ownPos[1]+1]));
+                mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0], ownPos[1]+1]));
                 newPos = [ownPos[0], ownPos[1]+1];
             }else{
                 const muta = board[ownPos[0], ownPos[1]+1].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0], ownPos[1]+1], dir);
                 if(muta){
                     mutation.push(muta);
-                    if(muta.type === "moved"){
+                    if(muta.type === "MOVE"){
                         newPos = [ownPos[0], ownPos[1]+1];
                     }
                 }
@@ -104,9 +104,8 @@ export default class Player extends Piece{
                     board[newPos[0]][newPos[1]-1] === "H" &&
                     board[newPos[0]][newPos[1]+1] === "H"
                 ){
-                    //Delete player piece and loose
-                    mutation.push(this.muta_gen("delete", null, null, null, null, null, false));
-                    mutation.push(this.muta_gen("win", null, null, newPos));
+                    //Delete player piece
+                    mutation.push(mutations.deletePiece(newPos));
                 }
             }
             if(newPos[0] === board.length)
@@ -116,9 +115,8 @@ export default class Player extends Piece{
                     board[newPos[0]][newPos[1]-1] === "H" &&
                     board[newPos[0]][newPos[1]+1] === "H"
                 ){
-                    //Delete player piece and loose
-                    mutation.push(this.muta_gen("delete", null, null, null, null, null, false));
-                    mutation.push(this.muta_gen("win", null, null, newPos));
+                  //Delete player piece
+                  mutation.push(mutations.deletePiece(newPos));
                 }
             }
             if(newPos[1] === 0)
@@ -128,9 +126,8 @@ export default class Player extends Piece{
                     board[newPos[0]-1][newPos[1]] === "H" &&
                     board[newPos[0]][newPos[1]+1] === "H"
                 ){
-                    //Delete player piece and loose
-                    mutation.push(this.muta_gen("delete", null, null, null, null, null, false));
-                    mutation.push(this.muta_gen("win", null, null, newPos));
+                  //Delete player piece
+                  mutation.push(mutations.deletePiece(newPos));
                 }
             }
             if(newPos[1] === board.width)
@@ -140,9 +137,8 @@ export default class Player extends Piece{
                     board[newPos[0]-1][newPos[1]] === "H" &&
                     board[newPos[0]][newPos[1]-1] === "H"
                 ){
-                    //Delete player piece and loose
-                    mutation.push(this.muta_gen("delete", null, null, null, null, null, false));
-                    mutation.push(this.muta_gen("win", null, null, newPos));
+                  //Delete player piece
+                  mutation.push(mutations.deletePiece(newPos));
                 }
             }
         }

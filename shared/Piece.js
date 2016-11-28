@@ -21,8 +21,8 @@ export default class Piece
         K : "Gate",
         L : "Crystal",
         M : "Dynamite",
-        N : "Barrels",
-        O : "Balls",
+        N : "Barrel",
+        O : "Ball",
         X : "Empty"
     });
 
@@ -43,8 +43,8 @@ export default class Piece
         "Gate" : "",
         "Crystal" : "",
         "Dynamite" : "",
-        "Barrels" : "",
-        "Balls" : ""
+        "Barrel" : "",
+        "Ball" : ""
     });
 
     constructor(type){
@@ -63,7 +63,7 @@ export default class Piece
     collide(board, playerPos, ownPos, dir){
         const mutation = [];
         if(this.type === "Wall"){
-            return null;
+            return [];
         }else if(this.type === "Goal")
         {
             //Eat and win
