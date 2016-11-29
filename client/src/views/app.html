@@ -1,6 +1,10 @@
 <template>
-    <a route-href="route: home">
-        <img alt="Home" src="../sprites/title.png">
-    </a>
+    <div class="navBar">
+        <a route-href="route: home">
+            <img alt="Home" src="../../sprites/title.png" height=50 width=130>
+        </a>
+        <a route-href="route: browse" class="navElement">Browse</a>
+        <a route-href="route: create" class="navElement">Create</a>
+    </div>
   <router-view></router-view>
 </template>

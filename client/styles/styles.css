@@ -43,3 +43,24 @@ span.errorText {
 span.infoText {
     display: inline-block;
 }
+
+.navBar {
+    position: relative;
+    height: 50px;
+    color: #410081;
+    background-color: #C0C0C0;
+    border-style: none none solid;
+    border-color: #410081
+}
+
+.navElement {
+    position: relative;
+    top: -20px;
+    height: 50px;
+    font-family: "Arial";
+    color: inherit;
+    background-color: inherit;
+    border-style: none solid none;
+    border-color: #008141;
+    display: inline;
+}
