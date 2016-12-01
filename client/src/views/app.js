@@ -41,6 +41,12 @@ export class App
         this.router.navigateToRoute(route, params);
     }
 
+    /* When the user clicks on the button,
+    toggle between hiding and showing the dropdown content */
+    dropdown() {
+        document.getElementById("myDropdown").classList.toggle("show");
+    }
+
     configureRouter(config, router)
     {
         config.title = "Zeek Online";

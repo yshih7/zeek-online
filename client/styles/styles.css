@@ -46,7 +46,7 @@ span.infoText {
 
 .navBar {
     position: relative;
-    height: 50px;
+    height: 40px;
     color: #410081;
     background-color: #C0C0C0;
     border-style: none none solid;
@@ -54,10 +54,10 @@ span.infoText {
 }
 
 .navElement {
-    position: absolute;
-    bottom: 21px;
-    height: 52px;
-    font-family: "Arial";
+    position: relative;
+    bottom: 14px;
+    height: inherit;
+    font-family: "Veranda";
     font-size:130%;
     color: inherit;
     background-color: inherit;
@@ -65,3 +65,39 @@ span.infoText {
     border-color: #410081;
     display: inline;
 }
+
+/* Dropdown button on hover & focus */
+.navElement:hover, .navElement:focus {
+    background-color: #D0D0D0;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    height: inherit;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top: 28px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
