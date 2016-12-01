@@ -16,6 +16,31 @@ class AuthPipelineStep
 
 export class App
 {
+    loggedIn = false;
+    displayName = "";
+    loginName = "";
+
+    activate()
+    {
+        const user = app.get("user");
+        if (user)
+        {
+            this.loggedIn = true;
+            this.displayName = user.displayName;
+            this.loginName = user.loginName;
+        }
+    }
+
+    logout()
+    {
+        app.logout();
+        this.loggedIn = false;
+    }
+
+    navigate(route, params) {
+        this.router.navigateToRoute(route, params);
+    }
+
     configureRouter(config, router)
     {
         config.title = "Zeek Online";
