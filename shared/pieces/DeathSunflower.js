@@ -1,7 +1,6 @@
 export default class DeathSunflower{
   type = "Death Sunflower";
-  //Need link
-  sprite = "";
+  sprite = "DeathSunflower.png";
 
   constructor(){
     //Just putting it here

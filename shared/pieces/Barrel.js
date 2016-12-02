@@ -1,6 +1,5 @@
 export default class Barrel{
   type = "Barrel";
-  //Need link
   sprite = "Barrel.png";
 
   constructor(){

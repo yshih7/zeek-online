@@ -1,6 +1,5 @@
 export default class DeathGoal{
   type = "Death Goal";
-  //Need link
   sprite = "DeathGoal.png";
 
   constructor(){

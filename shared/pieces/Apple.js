@@ -1,6 +1,5 @@
 export default class Apple{
   type = "Apple";
-  //Need link
   sprite = "Apple.png";
 
   constructor(){

@@ -1,11 +1,17 @@
 export default class Dynamite{
   type = "Dynamite";
-  //Need link
   sprite = "Dynamite_1.png";
 
   constructor(){
     //Just putting it here
   }
+
+  static stateList = Object.freeze({
+      state_1 : "Dynamite_1.png",
+      state_2 : "Dynamite_2.png",
+      state_3 : "Dynamite_3.png",
+      boom: "Boom.png"
+  });
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];

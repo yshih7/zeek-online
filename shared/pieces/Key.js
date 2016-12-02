@@ -1,6 +1,5 @@
 export default class Key{
   type = "Key";
-  //Need link
   sprite = "Key.png";
 
   constructor(){

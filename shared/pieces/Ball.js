@@ -1,6 +1,5 @@
 export default class Ball{
   type = "Ball";
-  //Need link
   sprite = "Ball.png";
 
   constructor(){

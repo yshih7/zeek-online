@@ -1,6 +1,5 @@
 export default class Goal{
   type = "Goal";
-  //Need link
   sprite = "Goal.png";
 
   constructor(){

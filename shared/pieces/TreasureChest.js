@@ -2,7 +2,6 @@ import Piece from "./piece";
 
 export default class TreasureChest extends Piece{
   type = "Treasure Chest";
-  //Need link
   sprite = "Treasure.png";
 
   constructor(){

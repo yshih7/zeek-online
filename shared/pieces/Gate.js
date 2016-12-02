@@ -1,6 +1,5 @@
 export default class Gate{
   type = "Gate";
-  //Need link
   sprite = "Door.png";
 
   constructor(){

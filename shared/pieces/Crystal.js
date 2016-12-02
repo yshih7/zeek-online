@@ -1,11 +1,15 @@
 export default class Crystal{
   type = "Crystal";
-  //Need link
   sprite = "Crystal_1.png";
 
   constructor(){
     //Just putting it here
   }
+
+  static stateList = Object.freeze({
+      state_1 : "Crystal_1.png",
+      state_2 : "Crystal_2.png"
+  });
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];
