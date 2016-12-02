@@ -52,6 +52,7 @@ export class App
     {
         app.logout();
         this.loggedIn = false;
+        this.router.navigateToRoute('home');
     }
 
     navigate(route, params) {
@@ -60,15 +61,17 @@ export class App
 
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
-    setDropdown() {
-        this.dropdown = !this.dropdown;
-
-        const closeDropdown = () => {
-            this.dropdown = false;
-            document.removeEventListener("click", closeDropdown, false);
-        };
-        document.addEventListener("click", closeDropdown, false);
+    openDropdown() {
+        if (!this.dropdown) {
+            this.dropdown = true;
+            document.addEventListener("click", this.closeDropdown, false);
+        }
     }
+
+    closeDropdown = () => {
+        this.dropdown = false;
+        document.removeEventListener("click", this.closeDropdown, false);
+    };
 
     configureRouter(config, router)
     {

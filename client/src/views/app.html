@@ -13,9 +13,9 @@
 
         <template if.bind="loggedIn">
             <div class="dropdown">
-              <button click.delegate="setDropdown()" class="navElement">${displayName}</button>
+              <button click.delegate="openDropdown()" class="navElement">${displayName}</button>
               <div id="myDropdown" class="dropdown-content" if.bind="dropdown">
-                <a route-href="route: profile; params.bind: { loginName: loginName}">Profile</a>
+                <button type="button" click.delegate="navigate('profile', { loginName: loginName})">Profile</a>
                 <button type="button" click.delegate="logout()">Logout</button>
               </div>
             </div>
