@@ -7,41 +7,41 @@ const ERR_GENERIC = "Something went wrong. Please try again later.";
 @inject(Router)
 export class Create
 {
-	name = "";
-	tileMap = [];
-	tags = "";
-	error = "";
-	length;
-	width;
+    name = "";
+    tileMap = [];
+    tags = "";
+    error = "";
+    width;
+    height;
 
-	router;
+    router;
 
-	constructor(router)
+    constructor(router)
 	{
-		this.router = router;
-	}
+        this.router = router;
+    }
 
 
-	async create(){
+    async create(){
 		//create the map with the current configuration
 		//.split(/\s+/g)
 		//date = new Date();
-		try
+        try
     {
-        await maps.create({
-				name: this.name,
-				tags: this.tags.split(/\s*,\s*/g),
-				length: parseInt(this.length),
-				width: parseInt(this.width),
-				tileMap: this.tileMap.split(/\s+/g)
-        });
-    }
-		catch (err)
+            await maps.create({
+                name: this.name,
+                tags: this.tags.split(/\s*,\s*/g),
+                width: parseInt(this.width),
+                height: parseInt(this.height),
+                tileMap: this.tileMap.split(/\s+/g)
+            });
+        }
+        catch (err)
     {
-        console.error(JSON.stringify(err));
-				this.error = err;
-        return;
+            console.error(JSON.stringify(err));
+            this.error = err;
+            return;
+        }
     }
-	}
 
 }
