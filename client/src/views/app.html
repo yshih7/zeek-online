@@ -13,11 +13,10 @@
 
         <template if.bind="loggedIn">
             <div class="dropdown">
-              <button click.delegate="dropdown()" class="navElement">${displayName}</button>
-              <div id="myDropdown" class="dropdown-content">
-                <a href="#">Link 1</a>
-                <a href="#">Link 2</a>
-                <a href="#">Link 3</a>
+              <button click.delegate="setDropdown()" class="navElement">${displayName}</button>
+              <div id="myDropdown" class="dropdown-content" if.bind="dropdown">
+                <a route-href="route: profile; params.bind: { loginName: loginName}">Profile</a>
+                <button type="button" click.delegate="logout()">Logout</button>
               </div>
             </div>
         </template>

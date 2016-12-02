@@ -1,5 +1,7 @@
 import app from "../services";
+import {inject} from "aurelia-framework";
 import {Redirect} from "aurelia-router";
+import {EventAggregator} from 'aurelia-event-aggregator';
 
 class AuthPipelineStep
 {
@@ -14,14 +16,29 @@ class AuthPipelineStep
     }
 }
 
+@inject(EventAggregator)
 export class App
 {
     loggedIn = false;
+    dropdown = false;
     displayName = "";
     loginName = "";
 
-    activate()
-    {
+    constructor(eventAggregator) {
+        this.eventAggregator = eventAggregator;
+        this.eventAggregator.subscribe('login', payload => {
+            console.log("ding")
+            const user = app.get("user");
+            if (user)
+            {
+                this.loggedIn = true;
+                this.displayName = user.displayName;
+                this.loginName = user.loginName;
+            }
+        });
+    }
+
+    activate() {
         const user = app.get("user");
         if (user)
         {
@@ -43,8 +60,14 @@ export class App
 
     /* When the user clicks on the button,
     toggle between hiding and showing the dropdown content */
-    dropdown() {
-        document.getElementById("myDropdown").classList.toggle("show");
+    setDropdown() {
+        this.dropdown = !this.dropdown;
+
+        const closeDropdown = () => {
+            this.dropdown = false;
+            document.removeEventListener("click", closeDropdown, false);
+        };
+        document.addEventListener("click", closeDropdown, false);
     }
 
     configureRouter(config, router)
