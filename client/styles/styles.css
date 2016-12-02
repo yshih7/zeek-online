@@ -43,3 +43,73 @@ span.errorText {
 span.infoText {
     display: inline-block;
 }
+
+.navBar {
+    position: relative;
+    height: 40px;
+    color: #410081;
+    background-color: #C0C0C0;
+    border-style: none none solid;
+    border-color: #410081
+}
+
+.navElement {
+    position: relative;
+    bottom: 14px;
+    height: inherit;
+    font-family: "Veranda";
+    font-size:130%;
+    color: inherit;
+    background-color: inherit;
+    border-style: solid;
+    border-color: #410081;
+    display: inline;
+}
+
+/* Dropdown button on hover & focus */
+.navElement:hover, .navElement:focus {
+    background-color: #D0D0D0;
+    cursor: pointer;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+    position: relative;
+    display: inline-block;
+    height: inherit;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+    display: block;
+    position: absolute;
+    top: 28px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.dropdown-content:hover {
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+    font-family: "Veranda";
+    font-size:130%;
+    color: inherit;
+    background-color: inherit;
+    display: block;
+}
+
+/* buttons in the dropdown */
+.dropdown-content button {
+    font-family: "Veranda";
+    font-size:130%;
+    color: inherit;
+    background-color: inherit;
+    display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #f1f1f1}

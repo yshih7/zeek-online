@@ -1,3 +1,26 @@
 <template>
+    <div class="navBar">
+        <a route-href="route: home">
+            <img alt="Home" src="../../sprites/title.png" height=40 width=104>
+        </a>
+        <button type="button" click.delegate="navigate('browse')" class="navElement">Browse</button>
+        <button type="button" click.delegate="navigate('create')" class="navElement">Create</button>
+
+        <template if.bind="!loggedIn">
+            <button type="button" click.delegate="navigate('login')" class="navElement">Login</button>
+            <button type="button" click.delegate="navigate('signup')" class="navElement">Sign Up</button>
+        </template>
+
+        <template if.bind="loggedIn">
+            <div class="dropdown">
+              <button click.delegate="openDropdown()" class="navElement">${displayName}</button>
+              <div id="myDropdown" class="dropdown-content" if.bind="dropdown">
+                <button type="button" click.delegate="navigate('profile', { loginName: loginName})">Profile</a>
+                <button type="button" click.delegate="logout()">Logout</button>
+              </div>
+            </div>
+        </template>
+    </div>
+
   <router-view></router-view>
 </template>
