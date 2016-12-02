@@ -13,7 +13,7 @@ export default class Game
     initialState; //Initial board state, useful for restarting the board
     length;       //Length of the board
     width;        //Width of the board
-    won = false;  //Has the game been won?
+    won;  //Has the game been won?
 
     get player()
     {
@@ -46,6 +46,7 @@ export default class Game
     {
         this.score = 0;
         this.bonus = INIT_BONUS;
+        this.won = false;
 
         this.board = [];
         for (let i = 0; i < this.initialState.length; i++)
