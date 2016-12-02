@@ -1,9 +1,7 @@
-import Piece from "./piece";
-
-export default class DeathGoal extends Piece{
-  type = "Death Goal";
+export default class Goal{
+  type = "Goal";
   //Need link
-  sprite = "";
+  sprite = "Goal.png";
 
   constructor(){
     //Just putting it here
@@ -11,10 +9,10 @@ export default class DeathGoal extends Piece{
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];
-    //Delete, move piece, loose
+    //Delete, move piece, win
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.deletePiece(ownPos));
+    mutation.push(mutations.win());
     return mutation;
   }
 }

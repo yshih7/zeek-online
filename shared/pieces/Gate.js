@@ -1,9 +1,7 @@
-import Piece from "./piece";
-
-export default class Key extends Piece{
-  type = "Key";
+export default class Gate{
+  type = "Gate";
   //Need link
-  sprite = "";
+  sprite = "Door.png";
 
   constructor(){
     //Just putting it here
@@ -11,13 +9,13 @@ export default class Key extends Piece{
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];
-    //Try to eat first. If player has key, do nothing. If not, add to inven and move
+    //If has key, move in and replace block. Else, do nothing
     if(board[playerPos[0]][playerPos[1]].inventory.has("Key") ){
-        return [];
-    }else{
+        mutation.push(mutations.deleteInventory("Key"));
         mutation.push(mutations.deletePiece(ownPos));
         mutation.push(mutations.move(playerPos, ownPos));
-        mutation.push(mutations.addInventory("Key"));
+    }else{
+        return [];
     }
     return mutation;
   }

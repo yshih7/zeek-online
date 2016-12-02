@@ -1,9 +1,7 @@
-import Piece from "./piece";
-
-export default class TreasureChest extends Piece{
-  type = "Treasure Chest";
+export default class DeathGoal{
+  type = "Death Goal";
   //Need link
-  sprite = "";
+  sprite = "DeathGoal.png";
 
   constructor(){
     //Just putting it here
@@ -11,10 +9,10 @@ export default class TreasureChest extends Piece{
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];
-    //Eat piece and increment score
+    //Delete, move piece, loose
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.incrementScore(50));
+    mutation.push(mutations.deletePiece(ownPos));
     return mutation;
   }
 }

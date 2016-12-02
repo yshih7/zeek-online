@@ -1,9 +1,7 @@
-import Piece from "./piece";
-
-export default class Wall extends Piece{
+export default class Wall{
   type = "Wall";
   //Need link
-  sprite = "";
+  sprite = "Wall1.png";
 
   constructor(){
     //Just putting it here

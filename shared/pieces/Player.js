@@ -1,13 +1,20 @@
-import Piece from "./piece";
 import * as mutations from "./mutations";
 
-export default class Player extends Piece{
+export default class Player{
     inventory = new Set();
+    type = "Player";
+    sprite = "";
 
     constructor(){
-    //Player piece is represented as A
-        super("A");
+      sprite = stateList.down;
     }
+
+    static stateList = Object.freeze({
+        up : "Player_North_1.png",
+        down : "Player_South_1.png",
+        left : "Player_West_1.png",
+        right : "Player_East_1.png"
+    });
 
     //Function that attemptes to move the player piece
     //May collide into other piece
@@ -16,6 +23,7 @@ export default class Player extends Piece{
         let newPos;
         //First check if the direction moving is empty
         if(dir === "up"){
+          sprite = stateList.up;
             //Check if it is edge piece to prevent out of bound error
             if(ownPos[0] === 0){
                 return [];
@@ -40,6 +48,7 @@ export default class Player extends Piece{
                 }
             }
         }else if(dir === "down"){
+          sprite = stateList.down;
             if(ownPos[0] === board.length){
                 return [];
             }
@@ -57,6 +66,7 @@ export default class Player extends Piece{
                 }
             }
         }else if(dir === "left"){
+          sprite = stateList.left;
             if(ownPos[1] === 0){
                 return [];
             }
@@ -74,6 +84,7 @@ export default class Player extends Piece{
                 }
             }
         }else if(dir === "right"){
+          sprite = stateList.right;
             if(ownPos[1] === board.width){
                 return [];
             }

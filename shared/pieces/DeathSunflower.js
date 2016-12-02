@@ -1,7 +1,5 @@
-import Piece from "./piece";
-
-export default class Sunflower extends Piece{
-  type = "Sunflower";
+export default class DeathSunflower{
+  type = "Death Sunflower";
   //Need link
   sprite = "";
 
@@ -11,10 +9,10 @@ export default class Sunflower extends Piece{
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];
-    //Eat piece and increment score
+    //Delete, move piece, loose
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.incrementScore(10));
+    mutation.push(mutations.deletePiece(ownPos));
     return mutation;
   }
 }
