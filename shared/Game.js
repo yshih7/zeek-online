@@ -11,20 +11,20 @@ export default class Game
     score;        //current score
     bonus;        //bonus score
     initialState; //Initial board state, useful for restarting the board
-    length;       //Length of the board
-    width;        //Width of the board
-    won = false;  //Has the game been won?
+    width;       //width of the board
+    height;        //height of the board
+    won;  //Has the game been won?
 
     get player()
     {
         return this.board && this.playerPos && this.board[this.playerPos[0]][this.playerPos[1]];
     }
 
-    constructor(map, length, width)
+    constructor(map, width, height)
     {
         this.initialState = map;
-        this.length = length;
         this.width = width;
+        this.height = height;
         //Construct the board
         this.build();
     }
@@ -46,12 +46,13 @@ export default class Game
     {
         this.score = 0;
         this.bonus = INIT_BONUS;
+        this.won = false;
 
         this.board = [];
         for (let i = 0; i < this.initialState.length; i++)
         {
-            const v = Math.floor(i / this.length);
-            const h = i % this.length;
+            const v = Math.floor(i / this.width);
+            const h = i % this.width;
             const type = this.initialState[i];
 
             if (h === 0)

@@ -1,0 +1,9 @@
+<template>
+    <canvas show.bind="!loading && !error" ref.bind="canvas" width.bind="canvasWidth" height.bind="canvasHeight"></canvas>
+    <div if.bind="loading">
+        Loading...
+    </div>
+    <div if.bind="!loading && error">
+        Error loading resources
+    </div>
+</template>
