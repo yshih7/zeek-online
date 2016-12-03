@@ -44,6 +44,7 @@
     "feathers-hooks": "^1.5.8",
     "feathers-socketio": "^1.4.1",
     "font-awesome": "^4.6.3",
+    "image-preloader": "^1.1.1",
     "isomorphic-fetch": "^2.2.1",
     "socket.io-client": "^1.4.8"
   },

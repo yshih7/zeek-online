@@ -3,6 +3,7 @@ export default class GameDriver
     game;
     lastTimestamp = 0;
     eventTarget = null;
+    gameView = null;
     running = false;
     animFrame = 0;
 
@@ -43,12 +44,18 @@ export default class GameDriver
     {
         this.eventTarget = eventTarget;
         this.eventTarget.addEventListener("keypress", this._handleKeypress, false);
+
+        if (this.eventTarget.au && this.eventTarget.au.gameView)
+        {
+            this.gameView = this.eventTarget.au.gameView.viewModel;
+        }
     }
 
     disconnect()
     {
         this.eventTarget.removeEventListener("keypress", this._handleKeypress, false);
         this.eventTarget = null;
+        this.gameView = null;
     }
 
     _update = timestamp =>
@@ -62,6 +69,10 @@ export default class GameDriver
         if (this.lastTimestamp)
         {
             this.game.update(timestamp - this.lastTimestamp);
+            if (this.gameView)
+            {
+                this.gameView.render();
+            }
         }
         this.lastTimestamp = timestamp;
 
