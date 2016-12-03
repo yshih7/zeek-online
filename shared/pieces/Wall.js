@@ -6,6 +6,10 @@ export default class Wall{
     //Just putting it here
   }
 
+  update(board, ownPos, dt){
+    //Does nothing
+  }
+
   collide(board, playerPos, ownPos, dir){
     return [];
   }

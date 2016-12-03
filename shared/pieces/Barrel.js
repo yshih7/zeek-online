@@ -6,6 +6,10 @@ export default class Barrel{
     //Just putting it here
   }
 
+  update(board, ownPos, dt){
+    //Does nothing
+  }
+
   collide(board, playerPos, ownPos, dir){
     //Does nothing since barrel is immovable
     return [];

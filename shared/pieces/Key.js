@@ -1,9 +1,15 @@
+import * as mutations from "./mutations";
+
 export default class Key{
   type = "Key";
   sprite = "Key.png";
 
   constructor(){
     //Just putting it here
+  }
+
+  update(board, ownPos, dt){
+    //Does nothing
   }
 
   collide(board, playerPos, ownPos, dir){

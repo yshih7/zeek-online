@@ -1,9 +1,15 @@
+import * as mutations from "./mutations";
+
 export default class Gate{
   type = "Gate";
   sprite = "Door.png";
 
   constructor(){
     //Just putting it here
+  }
+
+  update(board, ownPos, dt){
+    //Does nothing
   }
 
   collide(board, playerPos, ownPos, dir){

@@ -1,9 +1,9 @@
-import Piece from "./piece";
+import * as mutations from "./mutations";
 
-export default class PurpleTulip extends Piece{
+export default class PurpleTulip{
   type = "Purple Tulip";
-  //Need link
-  sprite = "";
+  static sprite = "Tulip_Open.png";
+  sprite = "Tulip_Open.png";
   openState = true;
 
   static stateList = Object.freeze({
@@ -20,21 +20,41 @@ export default class PurpleTulip extends Piece{
 
   constructor(){
     //Just putting it here
-    sprite = stateList.open;
   }
 
-  //Two helper function, you may or may not need them
-  eat(){
-    sprite = stateList.rest;
-    openState = false;
-  }
-  open(){
-    sprite = stateList.open;
-    openState = true;
+  update(board, ownPos, dt){
+    //Check if tulips adjacent to player position
+    const mutation = [];
+    if(ownPos[0] !== 0){
+      if(board[ownPos[0]-1][ownPos[1]] instanceof "Player" ||
+          board[ownPos[0]-1][ownPos[1]] instanceof "Apple"){
+            mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));
+      }
+    }
+    if(ownPos[0] !== board.length){
+      if(board[ownPos[0]+1][ownPos[1]] instanceof "Player" ||
+          board[ownPos[0]+1][ownPos[1]] instanceof "Apple"){
+            mutation.push(mutations.deletePiece([ownPos[0]+1, ownPos[1]]));
+      }
+    }
+    if(ownPos[1] !== 0){
+      if(board[ownPos[0]][ownPos[1]-1] instanceof "Player" ||
+          board[ownPos[0]][ownPos[1]-1] instanceof "Apple"){
+            mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]-1]));
+      }
+    }
+    if(ownPos[1] !== board.width){
+      if(board[ownPos[0]][ownPos[1]+1] instanceof "Player" ||
+          board[ownPos[0]][ownPos[1]+1] instanceof "Apple"){
+            mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]+1]));
+      }
+    }
+    return mutation;
   }
 
   collide(board, playerPos, ownPos, dir){
-    //If player can run into it, tulip is closed
+    //If player can collide into it, tulip is closed
+    //Nothing should be able to move it
     return [];
   }
 }

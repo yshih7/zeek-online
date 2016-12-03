@@ -1,4 +1,5 @@
 import Piece from "./piece";
+import * as mutations from "./mutations";
 
 export default class TreasureChest extends Piece{
   type = "Treasure Chest";
@@ -6,6 +7,10 @@ export default class TreasureChest extends Piece{
 
   constructor(){
     //Just putting it here
+  }
+
+  update(board, ownPos, dt){
+    //Does nothing
   }
 
   collide(board, playerPos, ownPos, dir){

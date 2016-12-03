@@ -32,6 +32,5 @@ static typeList = Object.freeze({
     L : Crystal,
     M : Dynamite,
     N : Barrel,
-    O : Ball,
-    X : Empty
+    O : Ball
 });
