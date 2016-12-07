@@ -17,14 +17,12 @@ export class Search {
         if(this.mode === "users") {
             //search on the users endpoint
             this.results = await users.find({query: {"displayName": lookup}});
-
-            for (var i = 0, len = this.results.length; i < len; i++) {
-                console.log(JSON.stringify(this.results[i]));
-            }
         } else if (this.mode === "maps") {
             //search on the maps endpoint
-            this.results = await maps.find({query: {"name": lookup}})
+            this.results = await maps.find({query: {"name": lookup}});
+        }
 
+        if (this.results) {
             for (var i = 0, len = this.results.length; i < len; i++) {
                 console.log(JSON.stringify(this.results[i]));
             }
