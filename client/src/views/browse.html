@@ -5,10 +5,22 @@
         <option value="maps">Maps</option>
     </select><br>
     <input type="text" value.bind="lookup"><button type="button" click.delegate="search(lookup)">Search</button><br>
-    <p repeat.for="result of results">
-        Login Name: ${result.loginName}<br>
-        Display Name: ${result.displayName}<br>
-        Email: ${result.email}<br>
-        <template if.bind:${result.nationality}==="">Nationality: ${result.nationality}<br></template>
-    </p>
+    <template if.bind="mode === 'users'">
+        <p repeat.for="result of results">
+            Login Name: <a route-href="route: profile; params.bind: {loginName: result.loginName}">${result.loginName}</a><br>
+            Display Name: ${result.displayName}<br>
+            Email: ${result.email}<br>
+            Nationality: ${result.nationality}<br>
+        </p>
+    </template>
+    <template if.bind="mode === 'maps'">
+        <p repeat.for="result of results">
+            Name: <a route-href="route: play; params.bind: {id: result.id}">${result.name}</a><br>
+            Author: ${result.author}<br>
+            Created At: ${result.createdAt}<br>
+            Tags: <p reapeat.for="tag of result.tags">
+                ${tag},
+            </p>
+        </p>
+    </template>
 </template>

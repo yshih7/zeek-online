@@ -23,7 +23,11 @@ export class Search {
             }
         } else if (this.mode === "maps") {
             //search on the maps endpoint
-            const results = await users.find({name: lookup});
+            this.results = await maps.find({query: {"name": lookup}})
+
+            for (var i = 0, len = this.results.length; i < len; i++) {
+                console.log(JSON.stringify(this.results[i]));
+            }
         }
     }
 

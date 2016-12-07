@@ -36,7 +36,7 @@ export class profile {
             this.displayName = lookup.displayName;
 
             if (lookup.email) {
-                this.email = user.email;
+                this.email = lookup.email;
             } else {
                 this.email = "Not shown";
             }
