@@ -1,10 +1,10 @@
 <template>
-    <a route-href="route: home">Home</a>
-    <span class="errorText" if.bind="error">${error}</span><br>
+    <span class="errorText" if.bind="error">${error}<br></span>
     <template if.bind="!error">
         <h1>${displayName}'s Profile</h1>
         Email: ${email}<br>
         Nationality: ${nationality}<br>
+        Maps:<br>
         <a if.bind="self" route-href="route: editProfile">Edit</a>
     </template>
 </template>

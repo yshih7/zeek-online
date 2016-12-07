@@ -7,6 +7,7 @@ export class profile {
     displayName = "Loading..."
     email = "Loading..."
     nationality = "Loading..."
+    maps = [];
 
     self = false;   //whether or not you are looking at your own profile
 
