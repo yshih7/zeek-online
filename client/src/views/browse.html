@@ -1,0 +1,14 @@
+<template>
+    Search for:
+    <select value.bind="mode">
+        <option value="users">Users</option>
+        <option value="maps">Maps</option>
+    </select><br>
+    <input type="text" value.bind="lookup"><button type="button" click.delegate="search(lookup)">Search</button><br>
+    <p repeat.for="result of results">
+        Login Name: ${result.loginName}<br>
+        Display Name: ${result.displayName}<br>
+        Email: ${result.email}<br>
+        <template if.bind:${result.nationality}==="">Nationality: ${result.nationality}<br></template>
+    </p>
+</template>
