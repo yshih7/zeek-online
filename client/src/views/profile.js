@@ -34,6 +34,12 @@ export class profile {
         try {
             const lookup = await users.get(this.loginName);
 
+            try {
+                this.maps = await maps.find({query: {"author": this.loginName}});
+            } catch (err) {
+                console.log(JSON.stringify(err));
+            }
+
             this.displayName = lookup.displayName;
 
             if (lookup.email) {
