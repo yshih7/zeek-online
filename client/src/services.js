@@ -17,7 +17,7 @@ const app = feathers()
 socket.io.engine.on("upgrade", async () =>
 {
     if (!app.get("user")) return;
-    
+
     try
     {
         await app.authenticate();
@@ -30,3 +30,4 @@ socket.io.engine.on("upgrade", async () =>
 
 export default app;
 export const users = app.service("users");
+export const maps = app.service("maps");

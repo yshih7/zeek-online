@@ -7,6 +7,7 @@ export class profile {
     displayName = "Loading..."
     email = "Loading..."
     nationality = "Loading..."
+    maps = [];
 
     self = false;   //whether or not you are looking at your own profile
 
@@ -33,10 +34,16 @@ export class profile {
         try {
             const lookup = await users.get(this.loginName);
 
+            try {
+                this.maps = await maps.find({query: {"author": this.loginName}});
+            } catch (err) {
+                console.log(JSON.stringify(err));
+            }
+
             this.displayName = lookup.displayName;
 
             if (lookup.email) {
-                this.email = user.email;
+                this.email = lookup.email;
             } else {
                 this.email = "Not shown";
             }

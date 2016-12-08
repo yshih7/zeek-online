@@ -1,10 +1,17 @@
 <template>
-    <a route-href="route: home">Home</a>
-    <span class="errorText" if.bind="error">${error}</span><br>
+    <span class="errorText" if.bind="error">${error}<br></span>
     <template if.bind="!error">
         <h1>${displayName}'s Profile</h1>
         Email: ${email}<br>
         Nationality: ${nationality}<br>
+        <p repeat.for="map of maps">
+            Name: <a route-href="route: play; params.bind: {id: map.id}">${map.name}</a><br>
+            Author: ${map.author}<br>
+            Created At: ${map.createdAt}<br>
+            Tags: <p repeat.for="tag of map.tags">
+                ${tag},
+            </p>
+        </p><br>
         <a if.bind="self" route-href="route: editProfile">Edit</a>
     </template>
 </template>
