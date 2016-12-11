@@ -6,6 +6,7 @@ import app, {users, maps} from "../services";
 export class Search {
 
     @observable mode = "users"
+    lookup = ""
     router;
     results = [];
 
@@ -14,16 +15,19 @@ export class Search {
     }
 
     modeChanged() {
-        results = [];
+        this.results = [];
+        this.search(this.lookup);
     }
 
     async search(lookup) {
+
+    if (lookup === "") lookup = undefined;
+
         if(this.mode === "users") {
             //search on the users endpoint
             this.results = await users.find({query: {"displayName": lookup}});
         } else if (this.mode === "maps") {
             //search on the maps endpoint
-            if (lookup === "") lookup = undefined;
             this.results = await maps.find({query: {"name": lookup, "$sort" :{"createdAt":"-1"}}});
         }
 
