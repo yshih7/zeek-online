@@ -9,7 +9,7 @@
         <game-view board.bind="game.board"
                 width.bind="map.width"
                 height.bind="map.height"
-                view-model.bind="view"
+                view-model.ref="view"
                 tabindex="1"></game-view>
         <div class="gameControls">
             <h3 class="inlineTitle">Score</h3> ${game.score}<br>
