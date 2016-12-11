@@ -45,6 +45,7 @@ export default class Crystal{
             return mutation;
       }
     }
+    return mutation;
   }
 
   collide(board, playerPos, ownPos, dir){

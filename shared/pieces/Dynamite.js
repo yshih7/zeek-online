@@ -58,6 +58,7 @@ export default class Dynamite{
         return mutation;
       }
     }
+    return [];
   }
 
   collide(board, playerPos, ownPos, dir){

@@ -18,6 +18,7 @@ export default class Player{
 
     update(board, ownPos, dt){
       //Does nothing, the sprite update happens at move()
+      return [];
     }
 
     //Function that attemptes to move the player piece

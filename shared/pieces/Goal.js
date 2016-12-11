@@ -10,6 +10,7 @@ export default class Goal{
 
   update(board, ownPos, dt){
     //Does nothing
+    return [];
   }
 
   collide(board, playerPos, ownPos, dir){

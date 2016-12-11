@@ -42,4 +42,5 @@ export function pushBlock(board, playerPos, ownPos, dir){
           return [];
       }
   }//End direction check
+  return [];
 }
