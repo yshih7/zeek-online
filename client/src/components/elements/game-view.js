@@ -20,7 +20,6 @@ const sprites = Object.freeze([
     "Dynamite_1.png",
     "Dynamite_2.png",
     "Dynamite_3.png",
-    "Favicon.png",
     "Goal.png",
     "Key.png",
     "Player_East_1.png",
@@ -40,8 +39,7 @@ const sprites = Object.freeze([
     "Tulip_Resting.png",
     "Wall1.png",
     "Wall2.png",
-    "Wall3.png",
-    "title.png"
+    "Wall3.png"
 ]);
 
 export class GameViewCustomElement
