@@ -1,4 +1,6 @@
 import * as mutations from "./mutations";
+import Player from "./Player";
+import Apple from "./Apple";
 
 export default class PurpleTulip{
   type = "Purple Tulip";
@@ -26,26 +28,26 @@ export default class PurpleTulip{
     //Check if tulips adjacent to player position
     const mutation = [];
     if(ownPos[0] !== 0){
-      if(board[ownPos[0]-1][ownPos[1]] instanceof "Player" ||
-          board[ownPos[0]-1][ownPos[1]] instanceof "Apple"){
+      if(board[ownPos[0]-1][ownPos[1]] instanceof Player ||
+          board[ownPos[0]-1][ownPos[1]] instanceof Apple){
             mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));
       }
     }
     if(ownPos[0] !== board.length){
-      if(board[ownPos[0]+1][ownPos[1]] instanceof "Player" ||
-          board[ownPos[0]+1][ownPos[1]] instanceof "Apple"){
+      if(board[ownPos[0]+1][ownPos[1]] instanceof Player ||
+          board[ownPos[0]+1][ownPos[1]] instanceof Apple){
             mutation.push(mutations.deletePiece([ownPos[0]+1, ownPos[1]]));
       }
     }
     if(ownPos[1] !== 0){
-      if(board[ownPos[0]][ownPos[1]-1] instanceof "Player" ||
-          board[ownPos[0]][ownPos[1]-1] instanceof "Apple"){
+      if(board[ownPos[0]][ownPos[1]-1] instanceof Player ||
+          board[ownPos[0]][ownPos[1]-1] instanceof Apple){
             mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]-1]));
       }
     }
     if(ownPos[1] !== board.width){
-      if(board[ownPos[0]][ownPos[1]+1] instanceof "Player" ||
-          board[ownPos[0]][ownPos[1]+1] instanceof "Apple"){
+      if(board[ownPos[0]][ownPos[1]+1] instanceof Player ||
+          board[ownPos[0]][ownPos[1]+1] instanceof Apple){
             mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]+1]));
       }
     }

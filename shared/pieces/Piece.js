@@ -17,15 +17,15 @@ import Wall from "./Wall";
 
 //Look up table for the tye of piece
 //Useful for converting map data into meaning piece name
-static typeList = Object.freeze({
+const typeList = Object.freeze({
     A : Player,
     B : Wall,
     C : Goal,
-    D : Death Goal,
+    D : DeathGoal,
     E : Sunflower,
-    F : Treasure Chest,
-    G : Death Sunflower,
-    H : Purple Tulip,
+    F : TreasureChest,
+    G : DeathSunflower,
+    H : PurpleTulip,
     I : Apple,
     J : Key,
     K : Gate,
@@ -34,3 +34,5 @@ static typeList = Object.freeze({
     N : Barrel,
     O : Ball
 });
+
+export default typeList;

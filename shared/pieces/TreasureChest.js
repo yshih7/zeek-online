@@ -1,7 +1,6 @@
-import Piece from "./piece";
 import * as mutations from "./mutations";
 
-export default class TreasureChest extends Piece{
+export default class TreasureChest{
   type = "Treasure Chest";
   sprite = "Treasure.png";
 

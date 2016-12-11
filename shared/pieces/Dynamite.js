@@ -1,4 +1,5 @@
 import * as mutations from "./mutations";
+import Wall from "./Wall";
 
 export default class Dynamite{
   type = "Dynamite";
@@ -26,22 +27,22 @@ export default class Dynamite{
         //Explodes when timer reaches 0
         const mutation = [];
         if(ownPos[0] !== 0){
-          if(board[ownPos[0]-1][ownPos[1]] !instanceof "Wall"){
+          if(!(board[ownPos[0]-1][ownPos[1]] instanceof Wall)){
                 mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));
           }
         }
         if(ownPos[0] !== board.length){
-          if(board[ownPos[0]+1][ownPos[1]] !instanceof "Wall"){
+          if(!(board[ownPos[0]+1][ownPos[1]] instanceof Wall)){
                 mutation.push(mutations.deletePiece([ownPos[0]+1, ownPos[1]]));
           }
         }
         if(ownPos[1] !== 0){
-          if(board[ownPos[0]][ownPos[1]-1] !instanceof "Wall"){
+          if(!(board[ownPos[0]][ownPos[1]-1] instanceof Wall)){
                 mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]-1]));
           }
         }
         if(ownPos[1] !== board.width){
-          if(board[ownPos[0]][ownPos[1]+1] !instanceof "Wall"){
+          if(!(board[ownPos[0]][ownPos[1]+1] instanceof Wall)){
                 mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]+1]));
           }
         }

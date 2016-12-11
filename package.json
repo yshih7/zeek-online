@@ -26,7 +26,7 @@
     "feathers-configuration": "^0.3.3",
     "feathers-errors": "^2.4.0",
     "feathers-hooks": "^1.5.8",
-	"feathers-hooks-common": "^2.0.1",
+    "feathers-hooks-common": "^2.0.1",
     "feathers-rest": "^1.5.0",
     "feathers-rethinkdb": "^0.2.8",
     "feathers-socketio": "^1.4.1",
@@ -39,6 +39,7 @@
     "babel-cli": "^6.16.0",
     "babel-plugin-check-es2015-constants": "^6.8.0",
     "babel-plugin-transform-async-to-generator": "^6.16.0",
+    "babel-plugin-transform-class-properties": "^6.19.0",
     "babel-plugin-transform-es2015-block-scoping": "^6.15.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.16.0",
     "jasmine": "^2.5.2",
@@ -49,7 +50,8 @@
       "check-es2015-constants",
       "transform-es2015-block-scoping",
       "transform-async-to-generator",
-      "transform-es2015-modules-commonjs"
+      "transform-es2015-modules-commonjs",
+			"transform-class-properties"
     ],
     "sourceMaps": "inline"
   },

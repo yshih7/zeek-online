@@ -1,5 +1,5 @@
-import Piece from "./piece";
-import Player from "./player";
+import Piece from "./pieces/Piece";
+import Player from "./pieces/Player";
 
 const INIT_BONUS = 10000; //TODO: Figure out how much this should start at
 const MS_PER_BONUS_POINT = 100; //10pts a second
