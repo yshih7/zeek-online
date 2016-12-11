@@ -4,9 +4,11 @@ import {hooks as auth} from "feathers-authentication";
 export const before = {
     all: [],
     find: [
+        /*
         auth.verifyToken(),
         auth.populateUser(),
         auth.restrictToAuthenticated()
+        */
     ],
     get: [
         /*
