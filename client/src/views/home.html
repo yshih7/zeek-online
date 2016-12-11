@@ -1,17 +1,11 @@
 <template>
   <h1>Zeek Online</h1>
   Welcome!<br>
-
-  <template if.bind="!loggedIn">
-      <a route-href="route: login">Login</a>&nbsp;&nbsp;&nbsp;
-      <a route-href="route: signup">Create Account</a>
-  </template>
-  
-  <template if.bind="loggedIn">
-      You are logged in as ${displayName}!&nbsp;&nbsp;&nbsp;
-      <a route-href="route: profile; params.bind: { loginName: loginName}">Profile</a>&nbsp;&nbsp;&nbsp;
-      <a route-href="route: create">Create Map</a><br>
-      <button type="button" click.delegate="logout()">Log Out</button><br>
-      Lookup a user: <input type="text" value.bind="lookup"><button type="button" click.delegate="search(lookup)">Search</button><br>
-  </template>
+  <h2>About the Game</h2>
+  Originally created by Sidewalk Software in 2000. This is what they had to say.<br><br>
+  In each of several levels, Zeek is trying to get to a mushroom. He can't go through the walls, and he can only open a gate if he has a key. Zeek may find a barrel that he can't move, and he'll have to go around it. He may come up to a ball, but he can push the ball out of the way. He can collect yellow flowers along the way, but he must avoid the purple plants. If he gets too close to a purple plant, it will gobble him up. He may encounter a purple bud, but when he gets near it, the purple bud opens into a dangerous purple plant.
+  Fortunately, Zeek may find an apple that he can push next to the purple plant. When the apple gets close, the purple plant will gobble the apple, and Zeek can pass by. Or, Zeek may find a bomb that he can push next to the purple plant. The bomb will blow up the purple plant, but it will also blow up Zeek unless he moves away. Zeek may find a magic crystal in his way, but if he pushes two magic crystals together, they will disappear. He may find a toadstool that looks very much like a mushroom, but the toadstool is poisonous.
+  Do you think you can help Zeek get to the mushroom? Will you be able to collect any treasure chests along the way?
+  <h2>About the Creators</h2>
+  Created by the official Zeek the Geek fanclub.
 </template>
