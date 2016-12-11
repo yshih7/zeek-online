@@ -1,4 +1,4 @@
-import app, {users} from "../services";
+import app, {users, maps} from "../services";
 import {Redirect} from "aurelia-router";
 
 export class profile {
@@ -35,7 +35,13 @@ export class profile {
             const lookup = await users.get(this.loginName);
 
             try {
-                this.maps = await maps.find({query: {"author": this.loginName}});
+                this.maps = await maps.find({query: {"creator": this.loginName, "$sort" :{"createdAt":"-1"}}});
+
+                if (this.maps) {
+                    for (var i = 0, len = this.maps.length; i < len; i++) {
+                        console.log(JSON.stringify(this.maps[i]));
+                    }
+                }
             } catch (err) {
                 console.log(JSON.stringify(err));
             }

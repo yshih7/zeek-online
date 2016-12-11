@@ -7,8 +7,7 @@
     <input type="text" value.bind="lookup"><button type="button" click.delegate="search(lookup)">Search</button><br>
     <template if.bind="mode === 'users'">
         <p repeat.for="result of results">
-            Login Name: <a route-href="route: profile; params.bind: {loginName: result.loginName}">${result.loginName}</a><br>
-            Display Name: ${result.displayName}<br>
+            <a route-href="route: profile; params.bind: {loginName: result.loginName}">${result.displayName}</a><br>
             Email: ${result.email}<br>
             Nationality: ${result.nationality}<br>
         </p>
