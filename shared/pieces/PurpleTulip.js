@@ -28,7 +28,6 @@ export default class PurpleTulip{
 
   update(board, ownPos, dt){
     const mutation = [];
-
     //Check if tulip is eating things
     if(digesting){
       timer -= dt;
@@ -45,7 +44,6 @@ export default class PurpleTulip{
       }
       //End changing digesting state
     }
-
 
     //Check if opened tulips adjacent to player or apple
     if(!digesting){
