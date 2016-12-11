@@ -1,16 +1,15 @@
 import * as mutations from "./mutations";
-import * as mechanics from "./mechanics";
 
-export default class Apple {
-  type = "Apple";
-  sprite = "Apple.png";
+export default class Ball{
+  type = "Ball";
+  sprite = "Ball.png";
 
   constructor(){
     //Just putting it here
   }
 
   update(board, ownPos, dt){
-    //Does nothing, the sprite update happens at move()
+    //Does nothing
   }
 
   collide(board, playerPos, ownPos, dir){
