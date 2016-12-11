@@ -10,6 +10,7 @@ export default class DeathSunflower{
 
   update(board, ownPos, dt){
     //Does nothing
+    return [];
   }
 
   collide(board, playerPos, ownPos, dir){
