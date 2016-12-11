@@ -1,4 +1,4 @@
-import Piece from "./pieces/Piece";
+import pieces from "./pieces/Piece";
 import Player from "./pieces/Player";
 
 const INIT_BONUS = 10000; //TODO: Figure out how much this should start at
@@ -71,7 +71,7 @@ export default class Game
             }
             else
             {
-                this.board[v][h] = new Piece(type);
+                this.board[v][h] = new pieces[type]();
             }
         }
     }
@@ -111,7 +111,7 @@ export default class Game
                     this.player.inventory.delete(muta.item);
                     break;
                 case "CHANGE":
-                    this.board[muta.pos[0]][muta.pos[1]] = new Piece(muta.piece);
+                    this.board[muta.pos[0]][muta.pos[1]] = new muta.piece();
                     break;
             }
         }
