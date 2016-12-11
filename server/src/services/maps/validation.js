@@ -1,5 +1,7 @@
 const validate = ({loose = false} = {}) => async map =>
 {
+    console.log("Validating map");
+
     //Simple hand-written validation because we have such a simple service
     const errors = [];
 
@@ -16,27 +18,28 @@ const validate = ({loose = false} = {}) => async map =>
     }
     else if (!loose) map.tags = [];
 
-    if (map.length)
-    {
-        if (typeof map.length !== "number") errors.push("map.length must be a number");
-    }
-    else if (!loose) errors.push("A map must have a length");
-
     if (map.width)
     {
         if (typeof map.width !== "number") errors.push("map.width must be a number");
     }
     else if (!loose) errors.push("A map must have a width");
 
+    if (map.height)
+    {
+        if (typeof map.height !== "number") errors.push("map.height must be a number");
+    }
+    else if (!loose) errors.push("A map must have a height");
+
     if (map.tileMap)
     {
         if (!Array.isArray(map.tileMap)) errors.push("map.tileMap must be an array");
         if (map.tileMap.some(tag => typeof tag !== "string")) errors.push("map.tileMap must be an array of strings");
-        if (map.tileMap.length !== map.length * map.width)
+        if (map.tileMap.length !== map.width * map.height)
             errors.push("The map's stated dimensions do not match the entered map data");
     }
     else if (!loose) errors.push("A map must have map data");
 
+    console.log(`Errors: ${errors}`);
     if (errors.length !== 0) throw errors;
     return map;
 };

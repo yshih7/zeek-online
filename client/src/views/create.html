@@ -1,0 +1,34 @@
+<template>
+  <h1>Zeek Online</h1>
+	<h3>Create new map</h3><br>
+
+	Map Tiles: <br>
+	A	Player Start<br>
+	B	Wall<br>
+	C	Goal<br>
+	D	Death Goal<br>
+	E	Sunflower<br>
+	F	Treasure Chest<br>
+	G	Death Sunflower<br>
+	H	Purple Tulip<br>
+	I	Apple<br>
+	J	Key<br>
+	K	Gate<br>
+	L	Crystal<br>
+	M	Dynamite<br>
+	N	Barrel<br>
+	O	Ball<br>
+  X	Empty<br><br>
+	<span class="errorText" if.bind="error">${error}</span>
+	<form submit.delegate="create()">
+		<label>Name: <input type="text" name="name" value.bind="name"></label><br>
+		<label>Width: <input type="number" name="width" value.bind="width"></label><br>
+		<label>Height: <input type="number" name="height" value.bind="height"></label><br>
+		<label>Tags: <input type="text" name="tags" value.bind="tags"></label><br>
+		Map: <br>
+		<textarea name="tileMap" value.bind="tileMap" rows="20" cols="40"></textarea><br>
+		<button type="submit">Create</button>
+	</form>
+
+
+</template>
