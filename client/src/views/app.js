@@ -84,7 +84,7 @@ export class App
             {route: "profile/:loginName?", name: "profile", moduleId: "./profile", nav: false, title: "Profile", settings: {auth: false}},
             {route: "editProfile", name: "editProfile", moduleId: "./edit-profile", nav: false, title: "Edit Profile", settings: {auth: true}},
             {route: "browse", name: "browse", moduleId: "./browse", nav: false, title: "Browse", settings: {auth: false}},
-            {route: "play/:mapId", name: "play", moduleid: "./play", nav: false, title: "Play", settings: {auth: false}}
+            {route: "play/:mapId", name: "play", moduleId: "./play", nav: false, title: "Play", settings: {auth: false}}
         ]);
 
         config.addAuthorizeStep(new AuthPipelineStep());

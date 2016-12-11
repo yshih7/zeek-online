@@ -16,7 +16,6 @@ export class Search {
 
     modeChanged() {
         this.results = [];
-        this.search(this.lookup);
     }
 
     async search(lookup) {
