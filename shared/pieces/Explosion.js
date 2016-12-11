@@ -1,14 +1,15 @@
-import * as mutations from "./mutation";
+import * as mutations from "./mutations";
 
 export default class Explosion{
   time = 0.5;
+  sprite = "Boom.png";
 
   constructor(){
     //Does nothing
   }
 
   update(board, ownPos, dt){
-    const mutation;
+    const mutation = [];
     time -= dt;
     if(time <= 0){
       mutation.push(mutations.deletePiece(ownPos[0], ownPos[1]));

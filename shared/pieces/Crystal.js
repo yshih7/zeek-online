@@ -1,5 +1,4 @@
 import * as mutations from "./mutations";
-import Crystal from "./Crystal";
 
 export default class Crystal{
   type = "Crystal";
