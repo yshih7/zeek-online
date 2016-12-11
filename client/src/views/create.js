@@ -2,7 +2,7 @@ import {inject} from "aurelia-framework";
 import {Router, Redirect} from "aurelia-router";
 import app, {maps} from "../services";
 
-const ERR_GENERIC = "Something went wrong. Please check your import";
+const ERR_GENERIC = "Something went wrong. Please try again";
 
 @inject(Router)
 export class Create
