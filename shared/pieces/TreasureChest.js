@@ -1,7 +1,7 @@
 import * as mutations from "./mutations";
 
 export default class TreasureChest{
-  type = "Treasure Chest";
+  type = "TreasureChest";
   sprite = "Treasure.png";
 
   constructor(){

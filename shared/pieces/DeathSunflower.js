@@ -1,7 +1,7 @@
 import * as mutations from "./mutations";
 
 export default class DeathSunflower{
-  type = "Death Sunflower";
+  type = "DeathSunflower";
   sprite = "DeathSunflower.png";
 
   constructor(){

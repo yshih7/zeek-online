@@ -2,7 +2,7 @@ import {inject} from "aurelia-framework";
 import {Router, Redirect} from "aurelia-router";
 import app, {maps} from "../services";
 
-const ERR_GENERIC = "Something went wrong. Please try again later.";
+const ERR_GENERIC = "Something went wrong. Please check your import";
 
 @inject(Router)
 export class Create
@@ -17,7 +17,7 @@ export class Create
     router;
 
     constructor(router)
-	{
+	   {
         this.router = router;
     }
 
@@ -27,7 +27,7 @@ export class Create
 		//.split(/\s+/g)
 		//date = new Date();
         try
-    {
+        {
             await maps.create({
                 name: this.name,
                 tags: this.tags.split(/\s*,\s*/g),
@@ -37,11 +37,13 @@ export class Create
             });
         }
         catch (err)
-    {
-            console.error(JSON.stringify(err));
+        {
+            console.error(ERR_GENERIC);
             this.error = err;
             return;
         }
+        //Success
+        this.router.navigateToRoute("home");
     }
 
 }

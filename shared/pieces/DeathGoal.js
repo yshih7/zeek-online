@@ -1,7 +1,7 @@
 import * as mutations from "./mutations";
 
 export default class DeathGoal{
-  type = "Death Goal";
+  type = "DeathGoal";
   sprite = "DeathGoal.png";
 
   constructor(){

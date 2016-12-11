@@ -10,7 +10,7 @@ export default class Apple {
   }
 
   update(board, ownPos, dt){
-    //Does nothing, the sprite update happens at move()
+    //Does nothing
   }
 
   collide(board, playerPos, ownPos, dir){

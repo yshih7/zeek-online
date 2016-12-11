@@ -3,7 +3,7 @@ import Player from "./Player";
 import Apple from "./Apple";
 
 export default class PurpleTulip{
-  type = "Purple Tulip";
+  type = "PurpleTulip";
   static sprite = "Tulip_Open.png";
   sprite = "Tulip_Open.png";
   openState = true;
