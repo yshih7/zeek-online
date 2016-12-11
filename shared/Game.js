@@ -127,7 +127,7 @@ export default class Game
         {
             for (let j = 0; j < this.board[i].length; j++)
             {
-                this.board[i][j].update(this.board, [i, j], dt);
+                this.board[i][j] && this.board[i][j].update(this.board, [i, j], dt);
             }
         }
     }

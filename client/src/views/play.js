@@ -18,15 +18,19 @@ export class Play
 
             this.game = new Game(this.map.tileMap, this.map.width, this.map.height);
             this.driver = new GameDriver(this.game);
-            this.driver.connect(this.view);
-            this.view.focus();
-            this.driver.start();
         }
         catch (err)
         {
             console.error(err);
             this.mapNotFound = true;
         }
+    }
+
+    attached()
+    {
+        this.driver.connect(this.view);
+        this.view.focus();
+        this.driver.start();
     }
 
     reset(ev)

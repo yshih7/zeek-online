@@ -56,7 +56,8 @@ export class GameViewCustomElement
 
     async attached()
     {
-        const imageResults = await ImagePreloader.simplePreload(sprites.map(filename => `sprites/${filename}`));
+        const preloader = new ImagePreloader();
+        const imageResults = await preloader.preload(...sprites.map(filename => `sprites/${filename}`));
         if (imageResults.some(image => !image.status))
         {
             this.error = true;

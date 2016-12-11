@@ -45,9 +45,11 @@ export default class GameDriver
         this.eventTarget = eventTarget;
         this.eventTarget.addEventListener("keypress", this._handleKeypress, false);
 
-        if (this.eventTarget.au && this.eventTarget.au.gameView)
+        console.log(this.eventTarget);
+        console.log(this.eventTarget.au);
+        if (this.eventTarget.au && this.eventTarget.au["game-view"])
         {
-            this.gameView = this.eventTarget.au.gameView.viewModel;
+            this.gameView = this.eventTarget.au["game-view"].viewModel;
         }
     }
 
