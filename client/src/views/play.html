@@ -1,0 +1,20 @@
+<template>
+    <require from="../components/elements/game-view"></require>
+
+    <div if.bind="mapNotFound">
+        Map not found
+    </div>
+    <div if.bind="!mapNotFound">
+        <h2 class="titleBar">Play: ${map.name}</h1>
+        <game-view board.bind="game.board"
+                width.bind="map.width"
+                height.bind="map.height"
+                view-model.bind="view"
+                tabindex="1"></game-view>
+        <div class="gameControls">
+            <h3 class="inlineTitle">Score</h3> ${game.score}<br>
+            <h3 class="inlineTitle">Bonus</h3> ${game.bonus}<br>
+            <button type="button" name="reset" click.delegate="reset($event)">Reset</button>
+        </div>
+    </div>
+</template>
