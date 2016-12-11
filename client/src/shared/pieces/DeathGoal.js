@@ -1,9 +1,8 @@
-import Piece from "./piece";
 import * as mutations from "./mutations";
 
-export default class TreasureChest {
-  type = "Treasure Chest";
-  sprite = "Treasure.png";
+export default class DeathGoal{
+  type = "Death Goal";
+  sprite = "DeathGoal.png";
 
   constructor(){
     //Just putting it here
@@ -15,10 +14,10 @@ export default class TreasureChest {
 
   collide(board, playerPos, ownPos, dir){
     const mutation = [];
-    //Eat piece and increment score
+    //Delete, move piece, loose
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.incrementScore(50));
+    mutation.push(mutations.deletePiece(ownPos));
     return mutation;
   }
 }
