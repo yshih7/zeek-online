@@ -1,7 +1,7 @@
 import app from "../services";
 import {inject} from "aurelia-framework";
 import {Redirect} from "aurelia-router";
-import {EventAggregator} from 'aurelia-event-aggregator';
+import {EventAggregator} from "aurelia-event-aggregator";
 
 class AuthPipelineStep
 {
@@ -26,8 +26,8 @@ export class App
 
     constructor(eventAggregator) {
         this.eventAggregator = eventAggregator;
-        this.eventAggregator.subscribe('login', payload => {
-            console.log("ding")
+        this.eventAggregator.subscribe("login", payload => {
+            console.log("ding");
             const user = app.get("user");
             if (user)
             {
@@ -52,7 +52,7 @@ export class App
     {
         app.logout();
         this.loggedIn = false;
-        this.router.navigateToRoute('home');
+        this.router.navigateToRoute("home");
     }
 
     navigate(route, params) {
@@ -79,11 +79,12 @@ export class App
         config.map([
             {route: ["", "home"], name: "home", moduleId: "./home", nav: true, title: "Home", settings: {auth: false}},
             {route: "login", name: "login", moduleId: "./login", nav: false, title: "Login", settings: {auth: false}},
-						{route: "create", name: "create", moduleId: "./create", nav: true, title: "Create Map", settings: {auth: true}},
+			{route: "create", name: "create", moduleId: "./create", nav: true, title: "Create Map", settings: {auth: true}},
             {route: "signup", name: "signup", moduleId: "./signup", nav: false, title: "Create Account", settings: {auth: false}},
             {route: "profile/:loginName?", name: "profile", moduleId: "./profile", nav: false, title: "Profile", settings: {auth: false}},
             {route: "editProfile", name: "editProfile", moduleId: "./edit-profile", nav: false, title: "Edit Profile", settings: {auth: true}},
-            {route: "browse", name: "browse", moduleId: "./browse", nav: false, title: "Browse", settings: {auth: false}}
+            {route: "browse", name: "browse", moduleId: "./browse", nav: false, title: "Browse", settings: {auth: false}},
+            {route: "play/:mapId", name: "play", moduleid: "./play", nav: false, title: "Play", settings: {auth: false}}
         ]);
 
         config.addAuthorizeStep(new AuthPipelineStep());
