@@ -1,17 +1,19 @@
 export default class Wall{
-  type = "Wall";
-  sprite = "Wall1.png";
+    static pieceName = "Wall";
+    static sprite = "Wall1.png";
+    static description = "An impenetrable wall.";
+    sprite = "Wall1.png";
 
-  constructor(){
+    constructor(){
     //Just putting it here
-  }
+    }
 
-  update(board, ownPos, dt){
+    update(board, ownPos, dt){
     //Does nothing
-    return [];
-  }
+        return [];
+    }
 
-  collide(board, playerPos, ownPos, dir){
-    return [];
-  }
+    collide(board, playerPos, ownPos, dir){
+        return [];
+    }
 }

@@ -1,4 +1,3 @@
-import * as mutations from "./mutations";
 import Apple from "./Apple";
 import Ball from "./Ball";
 import Barrel from "./Barrel";

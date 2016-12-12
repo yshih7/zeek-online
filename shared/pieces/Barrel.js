@@ -1,18 +1,20 @@
 export default class Barrel{
-  type = "Barrel";
-  sprite = "Barrel.png";
+    static pieceName = "Barrel";
+    static sprite = "Barrel.png";
+    static description = "A barrel that can't be moved but can be blown up.";
+    sprite = "Barrel.png";
 
-  constructor(){
+    constructor(){
     //Just putting it here
-  }
+    }
 
-  update(board, ownPos, dt){
+    update(board, ownPos, dt){
     //Does nothing
-    return [];
-  }
+        return [];
+    }
 
-  collide(board, playerPos, ownPos, dir){
+    collide(board, playerPos, ownPos, dir){
     //Does nothing since barrel is immovable
-    return [];
-  }
+        return [];
+    }
 }

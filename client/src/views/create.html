@@ -1,35 +1,34 @@
 <template>
-  <h1>Zeek Online</h1>
-	<h3>Create new map</h3><br>
+    <require from="../components/elements/game-view"></require>
+    <require from="../util/converters/parse-int"></require>
 
-	Map Tiles: <br>
-	A	Player Start<br>
-	B	Wall<br>
-	C	Goal<br>
-	D	Death Goal<br>
-	E	Sunflower<br>
-	F	Treasure Chest<br>
-	G	Death Sunflower<br>
-	H	Open Purple Tulip<br>
-	I	Apple<br>
-	J	Key<br>
-	K	Gate<br>
-	L	Crystal<br>
-	M	Dynamite<br>
-	N	Barrel<br>
-	O	Ball<br>
-  P	Close Purple Tulip<br>
-  X	Empty<br><br>
-	<span class="errorText" if.bind="error">${error}</span>
-	<form submit.delegate="create()">
-		<label>Name: <input type="text" name="name" value.bind="name"></label><br>
-		<label>Width: <input type="number" name="width" value.bind="width"></label><br>
-		<label>Height: <input type="number" name="height" value.bind="height"></label><br>
-		<label>Tags: <input type="text" name="tags" value.bind="tags"></label><br>
-		Map: <br>
-		<textarea name="tileMap" value.bind="tileMap" rows="20" cols="40"></textarea><br>
-		<button type="submit">Create</button>
-	</form>
-
-
+    <h1>Zeek Online</h1>
+	<h2 class="titleBar">Create</h2>
+    <div class="editorMain">
+        <span class="errorText" if.bind="error">${error}</span>
+        <div class="centered">
+            <input type="text" name="name" value.bind="name" class="titleInput" placeholder="Title">
+            <input type="number" name="width" value.bind="width | parseInt"> x <input type="number" name="height" value.bind="height | parseInt">
+        </div>
+        <game-view board.bind="tileMap"
+                width.bind="width"
+                height.bind="height"
+                clicktile.delegate="handleClick($event)"
+                view-model.ref="view"
+                style="border: 1px solid black; display: table;"></game-view><br>
+        <label>Tags (comma separated): <input type="text" name="tags" value.bind="tags"></label><br>
+        <button type="button" click.delegate="create()" name="create">Create</button>
+    </div>
+    <div class="editorPalette">
+        <div class="paletteItem" repeat.for="tuple of pieces" with.bind="tuple">
+            <label>
+                <input type="radio" name="tileType" value.bind="key", checked.bind="tileType">
+                <img if.bind="type.sprite" src.bind="'sprites/' + type.sprite" alt.bind="type.pieceName">
+                ${type.pieceName}
+            </label>
+            <div class="paletteItemDescription" if.bind="type.description && tileType === key">
+                ${type.description}
+            </div>
+        </div>
+    </div>
 </template>

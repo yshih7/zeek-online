@@ -1,24 +1,26 @@
 import * as mutations from "./mutations";
 
 export default class Goal{
-  type = "Goal";
-  sprite = "Goal.png";
+    static pieceName = "Goal";
+    static sprite = "Goal.png";
+    static description = "A goal mushroom. Eat one of these to complete the level.";
+    sprite = "Goal.png";
 
-  constructor(){
+    constructor(){
     //Just putting it here
-  }
+    }
 
-  update(board, ownPos, dt){
+    update(board, ownPos, dt){
     //Does nothing
-    return [];
-  }
+        return [];
+    }
 
-  collide(board, playerPos, ownPos, dir){
-    let mutation = [];
+    collide(board, playerPos, ownPos, dir){
+        const mutation = [];
     //Delete, move piece, win
-    mutation.push(mutations.deletePiece(ownPos));
-    mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.win());
-    return mutation;
-  }
+        mutation.push(mutations.deletePiece(ownPos));
+        mutation.push(mutations.move(playerPos, ownPos));
+        mutation.push(mutations.win());
+        return mutation;
+    }
 }

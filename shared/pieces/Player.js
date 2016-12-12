@@ -2,8 +2,9 @@ import * as mutations from "./mutations";
 
 export default class Player{
     inventory = new Set();
-    type = "Player";
+    static pieceName = "Player";
     static sprite = "Player_South_1.png";
+    static description = "The player character. You can only have one of these.";
     sprite = "Player_South_1.png";
 
     constructor(){
@@ -18,7 +19,7 @@ export default class Player{
 
     update(board, ownPos, dt){
       //Does nothing, the sprite update happens at move()
-      return [];
+        return [];
     }
 
     //Function that attemptes to move the player piece
@@ -30,7 +31,7 @@ export default class Player{
         console.log(dir);
         //First check if the direction moving is empty
         if(dir === "UP"){
-          this.sprite = this.stateList.up;
+            this.sprite = this.stateList.up;
             //Check if it is edge piece to prevent out of bound error
             if(ownPos[0] === 0){
                 return [];
@@ -55,7 +56,7 @@ export default class Player{
                 }
             }
         }else if(dir === "DOWN"){
-          this.sprite = this.stateList.down;
+            this.sprite = this.stateList.down;
             if(ownPos[0] === board.length - 1){
                 return [];
             }
@@ -73,7 +74,7 @@ export default class Player{
                 }
             }
         }else if(dir === "LEFT"){
-          this.sprite = this.stateList.left;
+            this.sprite = this.stateList.left;
             if(ownPos[1] === 0){
                 return [];
             }
@@ -91,7 +92,7 @@ export default class Player{
                 }
             }
         }else if(dir === "RIGHT"){
-          this.sprite = this.stateList.right;
+            this.sprite = this.stateList.right;
             if(ownPos[1] === board.width - 1){
                 return [];
             }

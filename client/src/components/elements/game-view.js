@@ -123,6 +123,6 @@ export class GameViewCustomElement
         const col = Math.floor(x / TILE_WIDTH);
         const row = Math.floor(y / TILE_HEIGHT);
 
-        this.el.dispatchEvent(new CustomEvent("clickTile", {bubbles: true, cancelable: true, detail: {col, row}}));
+        this.el.dispatchEvent(new CustomEvent("clicktile", {bubbles: true, cancelable: true, detail: {col, row}}));
     }
 }

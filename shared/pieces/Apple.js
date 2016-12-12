@@ -1,22 +1,22 @@
-import * as mutations from "./mutations";
 import * as mechanics from "./mechanics";
-console.log(mechanics);
 
 export default class Apple {
-  type = "Apple";
-  sprite = "Apple.png";
+    static pieceName = "Apple";
+    static sprite = "Apple.png";
+    static description = "An apple that can be pushed around. Open tulips will eat it and stay full for a while.";
+    sprite = "Apple.png";
 
-  constructor(){
+    constructor(){
     //Just putting it here
-  }
+    }
 
-  update(board, ownPos, dt){
+    update(board, ownPos, dt){
     //Does nothing
-    return [];
-  }
+        return [];
+    }
 
-  collide(board, playerPos, ownPos, dir){
+    collide(board, playerPos, ownPos, dir){
     //Calls the helper function from mechanics
-    return mechanics.pushBlock(board, playerPos, ownPos, dir);
-  }
+        return mechanics.pushBlock(board, playerPos, ownPos, dir);
+    }
 }

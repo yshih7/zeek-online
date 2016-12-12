@@ -20,7 +20,7 @@ export class Search {
 
     async search(lookup) {
 
-    if (lookup === "") lookup = undefined;
+        if (lookup === "") lookup = undefined;
 
         if(this.mode === "users") {
             //search on the users endpoint
@@ -31,7 +31,7 @@ export class Search {
         }
 
         if (this.results) {
-            for (var i = 0, len = this.results.length; i < len; i++) {
+            for (let i = 0, len = this.results.length; i < len; i++) {
                 console.log(JSON.stringify(this.results[i]));
             }
         }
