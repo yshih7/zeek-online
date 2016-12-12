@@ -39,5 +39,6 @@ export class Play
 
         this.driver.reset();
         this.driver.start();
+        this.view.focus();
     }
 }
