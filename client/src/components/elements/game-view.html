@@ -1,5 +1,9 @@
 <template>
-    <canvas show.bind="!loading && !error" ref="canvas" width.bind="canvasWidth" height.bind="canvasHeight"></canvas>
+    <canvas show.bind="!loading && !error"
+            ref="canvas"
+            width.bind="canvasWidth"
+            height.bind="canvasHeight"
+            click.delegate="handleClick($event)"></canvas>
     <div if.bind="loading">
         Loading...
     </div>

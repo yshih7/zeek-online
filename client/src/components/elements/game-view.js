@@ -1,4 +1,4 @@
-import {bindable} from "aurelia-framework";
+import {bindable, inject} from "aurelia-framework";
 import ImagePreloader from "image-preloader";
 
 import pieces from "../../shared/pieces/Piece";
@@ -42,17 +42,24 @@ const sprites = Object.freeze([
     "Wall3.png"
 ]);
 
+@inject(Element)
 export class GameViewCustomElement
 {
     @bindable board = [];
     @bindable width = 0;
     @bindable height = 0;
     canvas;
+    el;
 
     canvasWidth = 0;
     canvasHeight = 0;
     loading = true;
     error = false;
+
+    constructor(el)
+    {
+        this.el = el;
+    }
 
     async attached()
     {
@@ -106,5 +113,16 @@ export class GameViewCustomElement
                 ctx.drawImage(sprite, h * TILE_WIDTH, v * TILE_HEIGHT);
             }
         }
+    }
+
+    handleClick({pageX, pageY})
+    {
+        const x = pageX - this.canvas.offsetLeft;
+        const y = pageY - this.canvas.offsetTop;
+
+        const col = Math.floor(x / TILE_WIDTH);
+        const row = Math.floor(y / TILE_HEIGHT);
+
+        this.el.dispatchEvent(new CustomEvent("clickTile", {bubbles: true, cancelable: true, detail: {col, row}}));
     }
 }
