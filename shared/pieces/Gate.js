@@ -14,7 +14,7 @@ export default class Gate{
   }
 
   collide(board, playerPos, ownPos, dir){
-    const mutation = [];
+    let mutation = [];
     //If has key, move in and replace block. Else, do nothing
     if(board[playerPos[0]][playerPos[1]].inventory.has("Key") ){
         mutation.push(mutations.deleteInventory("Key"));

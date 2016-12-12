@@ -14,6 +14,7 @@ export default class Game
     width;       //width of the board
     height;        //height of the board
     won;  //Has the game been won?
+    bonusTimer = MS_PER_BONUS_POINT;
 
     get player()
     {
@@ -86,8 +87,13 @@ export default class Game
             switch (muta.type)
             {
                 case "MOVE":
-                    this.board[muta.oldPos[0]][muta.oldPos[1]] = this.board[muta.newPos[0]][muta.newPos[1]];
+                    this.board[muta.newPos[0]][muta.newPos[1]] = this.board[muta.oldPos[0]][muta.oldPos[1]];
                     this.board[muta.oldPos[0]][muta.oldPos[1]] = null;
+
+                    if (muta.oldPos[0] === this.playerPos[0] && muta.oldPos[1] === this.playerPos[1])
+                    {
+                      this.playerPos = muta.newPos;
+                    }
                     break;
                 case "DELETE":
                     this.board[muta.pos[0]][muta.pos[1]] = null;
@@ -102,6 +108,7 @@ export default class Game
                     break;
                 case "WIN":
                     this.score += this.bonus;
+                    this.bonus = 0;
                     this.won = true;
                     break;
                 case "ADD_INVENTORY":
@@ -112,6 +119,11 @@ export default class Game
                     break;
                 case "CHANGE":
                     this.board[muta.pos[0]][muta.pos[1]] = new muta.piece();
+
+                    if (muta.pos[0] === this.playerPos[0] && muta.pos[1] === this.playerPos[1])
+                    {
+                        this.playerPos = null;
+                    }
                     break;
             }
         }
@@ -120,14 +132,19 @@ export default class Game
     //We need to standardize on what units this will be in. Probably milliseconds
     update(dt)
     {
-        this.bonus -= Math.floor(dt / MS_PER_BONUS_POINT);
+        this.bonusTimer -= dt;
+        while (this.bonusTimer <= 0)
+        {
+            this.bonus--;
+            this.bonusTimer += MS_PER_BONUS_POINT;
+        }
 
-        this.player.update(this.board, this.playerPos, dt);
+        this.player && this.processMutations(this.player.update(this.board, this.playerPos, dt));
         for (let i = 0; i < this.board.length; i++)
         {
             for (let j = 0; j < this.board[i].length; j++)
             {
-                this.board[i][j] && this.board[i][j].update(this.board, [i, j], dt);
+                this.board[i][j] && this.processMutations(this.board[i][j].update(this.board, [i, j], dt));
             }
         }
     }

@@ -14,6 +14,7 @@ import PurpleTulip from "./PurpleTulip";
 import Sunflower from "./Sunflower";
 import TreasureChest from "./TreasureChest";
 import Wall from "./Wall";
+import ClosedTulip from "./ClosedTulip";
 
 //Look up table for the tye of piece
 //Useful for converting map data into meaning piece name
@@ -32,7 +33,8 @@ const typeList = Object.freeze({
     L : Crystal,
     M : Dynamite,
     N : Barrel,
-    O : Ball
+    O : Ball,
+    P : ClosedTulip
 });
 
 export default typeList;

@@ -9,7 +9,7 @@ export default class Player{
     constructor(){
     }
 
-    static stateList = Object.freeze({
+    stateList = Object.freeze({
         up : "Player_North_1.png",
         down : "Player_South_1.png",
         left : "Player_West_1.png",
@@ -24,11 +24,13 @@ export default class Player{
     //Function that attemptes to move the player piece
     //May collide into other piece
     move(board, ownPos, dir){
-        const mutation = [];
+        let mutation = [];
         let newPos;
+
+        console.log(dir);
         //First check if the direction moving is empty
         if(dir === "UP"){
-          sprite = stateList.up;
+          this.sprite = this.stateList.up;
             //Check if it is edge piece to prevent out of bound error
             if(ownPos[0] === 0){
                 return [];
@@ -46,15 +48,15 @@ export default class Player{
                 const muta = board[ownPos[0]-1][ownPos[1]].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0]-1, ownPos[1]], dir);
                 if(muta){
-                    mutation.push(muta);
+                    mutation = mutation.concat(muta);
                     if(muta.type === "MOVE"){
                         mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0]-1, ownPos[1]]));
                     }
                 }
             }
         }else if(dir === "DOWN"){
-          sprite = stateList.down;
-            if(ownPos[0] === board.length){
+          this.sprite = this.stateList.down;
+            if(ownPos[0] === board.length - 1){
                 return [];
             }
             if(board[ownPos[0]+1][ownPos[1]] === null){
@@ -64,14 +66,14 @@ export default class Player{
                 const muta = board[ownPos[0]+1][ownPos[1]].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0]+1, ownPos[1]], dir);
                 if(muta){
-                    mutation.push(muta);
+                    mutation = mutation.concat(muta);
                     if(muta.type === "MOVE"){
                         mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0]-1, ownPos[1]]));
                     }
                 }
             }
         }else if(dir === "LEFT"){
-          sprite = stateList.left;
+          this.sprite = this.stateList.left;
             if(ownPos[1] === 0){
                 return [];
             }
@@ -82,15 +84,15 @@ export default class Player{
                 const muta = board[ownPos[0]][ownPos[1]-1].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0], ownPos[1]-1], dir);
                 if(muta){
-                    mutation.push(muta);
+                    mutation = mutation.concat(muta);
                     if(muta.type === "MOVE"){
                         mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0]-1, ownPos[1]]));
                     }
                 }
             }
         }else if(dir === "RIGHT"){
-          sprite = stateList.right;
-            if(ownPos[1] === board.width){
+          this.sprite = this.stateList.right;
+            if(ownPos[1] === board.width - 1){
                 return [];
             }
             if(board[ownPos[0]][ownPos[1]+1] === null){
@@ -100,7 +102,7 @@ export default class Player{
                 const muta = board[ownPos[0]][ownPos[1]+1].collide(board, [ownPos[0], ownPos[1]],
                                                                    [ownPos[0], ownPos[1]+1], dir);
                 if(muta){
-                    mutation.push(muta);
+                    mutation = mutation.concat(muta);
                     if(muta.type === "MOVE"){
                         mutation.push(mutations.move([ownPos[0], ownPos[1]], [ownPos[0]-1, ownPos[1]]));
                     }

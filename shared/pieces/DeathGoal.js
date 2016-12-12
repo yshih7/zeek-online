@@ -14,7 +14,7 @@ export default class DeathGoal{
   }
 
   collide(board, playerPos, ownPos, dir){
-    const mutation = [];
+    let mutation = [];
     //Delete, move piece, loose
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));

@@ -14,7 +14,7 @@ export default class Key{
   }
 
   collide(board, playerPos, ownPos, dir){
-    const mutation = [];
+    let mutation = [];
     //Try to eat first. If player has key, do nothing. If not, add to inven and move
     if(board[playerPos[0]][playerPos[1]].inventory.has("Key") ){
         return [];

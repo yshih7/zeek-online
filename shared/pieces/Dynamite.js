@@ -1,4 +1,5 @@
 import * as mutations from "./mutations";
+import * as mechanics from "./mechanics";
 import Wall from "./Wall";
 import Explosion from "./Explosion";
 
@@ -7,50 +8,55 @@ export default class Dynamite{
   static sprite = "Dynamite_1.png";
   sprite = "Dynamite_1.png";
   active = false;
-  time = 3;
+  time = 3000;
 
   constructor(){
     //Just putting it here
   }
 
-  static stateList = Object.freeze({
+  stateList = Object.freeze({
       state_1 : "Dynamite_1.png",
       state_2 : "Dynamite_2.png",
       state_3 : "Dynamite_3.png"
   });
 
   update(board, ownPos, dt){
-    if(active){
+    if(this.active){
 
       //Alternate sprite
-      if(sprite === stateList.state_2){
-        sprite = stateList.state_3;
-      }else{
-        sprite = stateList.state_2;
-      }
+      // if(this.sprite === this.stateList.state_2){
+      //   this.sprite = this.stateList.state_3;
+      // }else{
+      //   this.sprite = this.stateList.state_2;
+      // }
 
       //If active, count down timer
-      time -= dt;
-      if(dt <= 0){
+      this.time -= dt;
+      if(this.time <= 0){
+        console.log("blowing up");
         //Explodes when timer reaches 0
-        const mutation = [];
+        let mutation = [];
         if(ownPos[0] !== 0){
           if(!(board[ownPos[0]-1][ownPos[1]] instanceof Wall)){
+            console.log("up");
                 mutation.push(mutations.change([ownPos[0]-1, ownPos[1]], Explosion));
           }
         }
-        if(ownPos[0] !== board.length){
+        if(ownPos[0] !== board.length-1){
           if(!(board[ownPos[0]+1][ownPos[1]] instanceof Wall)){
+            console.log("down");
                 mutation.push(mutations.change([ownPos[0]+1, ownPos[1]], Explosion));
           }
         }
         if(ownPos[1] !== 0){
           if(!(board[ownPos[0]][ownPos[1]-1] instanceof Wall)){
-                mutation.push(mutations.Change([ownPos[0], ownPos[1]-1], Explosion));
+            console.log("left");
+                mutation.push(mutations.change([ownPos[0], ownPos[1]-1], Explosion));
           }
         }
-        if(ownPos[1] !== board.width){
+        if(ownPos[1] !== board.width-1){
           if(!(board[ownPos[0]][ownPos[1]+1] instanceof Wall)){
+            console.log("right");
                 mutation.push(mutations.change([ownPos[0], ownPos[1]+1], Explosion));
           }
         }
@@ -64,8 +70,8 @@ export default class Dynamite{
   collide(board, playerPos, ownPos, dir){
     //Calls the helper function from mechanics
     //activates the timer on the bomb
-    active = true;
-    sprite = stateList.state_2;
+    this.active = true;
+    this.sprite = this.stateList.state_2;
     return mechanics.pushBlock(board, playerPos, ownPos, dir);
   }
 }

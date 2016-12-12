@@ -1,7 +1,7 @@
 import * as mutations from "./mutations";
 
 export default class Explosion{
-  time = 0.5;
+  time = 500;
   sprite = "Boom.png";
 
   constructor(){
@@ -9,10 +9,10 @@ export default class Explosion{
   }
 
   update(board, ownPos, dt){
-    const mutation = [];
-    time -= dt;
-    if(time <= 0){
-      mutation.push(mutations.deletePiece(ownPos[0], ownPos[1]));
+    let mutation = [];
+    this.time -= dt;
+    if(this.time <= 0){
+      mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]]));
     }
     return mutation;
   }

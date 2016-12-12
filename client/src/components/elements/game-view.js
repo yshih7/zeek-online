@@ -81,6 +81,9 @@ export class GameViewCustomElement
 
         const ctx = this.canvas.getContext("2d");
 
+        //Clear the canvas
+        this.canvas.width = this.canvas.width;
+
         for (let v = 0; v < this.height; v++)
         {
             for (let h = 0; h < this.width; h++)
@@ -100,7 +103,7 @@ export class GameViewCustomElement
                 const sprite = new Image();
                 sprite.src = `sprites/${piece.sprite}`;
 
-                ctx.drawImage(sprite, v * TILE_HEIGHT, h * TILE_WIDTH);
+                ctx.drawImage(sprite, h * TILE_WIDTH, v * TILE_HEIGHT);
             }
         }
     }

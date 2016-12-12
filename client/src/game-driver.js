@@ -22,6 +22,7 @@ export default class GameDriver
     _handleKeypress = ev =>
     {
         if (!this.running) return;
+        ev.preventDefault();
 
         switch (ev.key)
         {
@@ -43,7 +44,7 @@ export default class GameDriver
     connect(eventTarget)
     {
         this.eventTarget = eventTarget;
-        this.eventTarget.addEventListener("keypress", this._handleKeypress, false);
+        this.eventTarget.addEventListener("keydown", this._handleKeypress, false);
 
         console.log(this.eventTarget);
         console.log(this.eventTarget.au);
@@ -55,19 +56,13 @@ export default class GameDriver
 
     disconnect()
     {
-        this.eventTarget.removeEventListener("keypress", this._handleKeypress, false);
+        this.eventTarget.removeEventListener("keydown", this._handleKeypress, false);
         this.eventTarget = null;
         this.gameView = null;
     }
 
     _update = timestamp =>
     {
-        if (this.game.won || !this.game.player)
-        {
-            this.stop();
-            return;
-        }
-
         if (this.lastTimestamp)
         {
             this.game.update(timestamp - this.lastTimestamp);
@@ -77,6 +72,12 @@ export default class GameDriver
             }
         }
         this.lastTimestamp = timestamp;
+
+        if (this.game.won || !this.game.player)
+        {
+            this.stop();
+            return;
+        }
 
         this.animFrame = requestAnimationFrame(this._update);
     };

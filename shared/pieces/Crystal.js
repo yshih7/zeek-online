@@ -1,4 +1,5 @@
 import * as mutations from "./mutations";
+import * as mechanics from "./mechanics";
 
 export default class Crystal{
   type = "Crystal";
@@ -9,14 +10,14 @@ export default class Crystal{
     //Just putting it here
   }
 
-  static stateList = Object.freeze({
+  stateList = Object.freeze({
       state_1 : "Crystal_1.png",
       state_2 : "Crystal_2.png"
   });
 
   update(board, ownPos, dt){
     //If there is a crystal adjacent to it, delete both
-    const mutation = [];
+    let mutation = [];
     if(ownPos[0] !== 0){
       if(board[ownPos[0]-1][ownPos[1]] instanceof Crystal){
             mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));

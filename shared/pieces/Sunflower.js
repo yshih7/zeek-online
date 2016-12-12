@@ -14,11 +14,11 @@ export default class Sunflower{
   }
 
   collide(board, playerPos, ownPos, dir){
-    const mutation = [];
+    let mutation = [];
     //Eat piece and increment score
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.incrementScore(10));
+    mutation.push(mutations.incrementScore(50));
     return mutation;
   }
 }

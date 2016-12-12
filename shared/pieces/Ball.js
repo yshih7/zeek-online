@@ -1,4 +1,5 @@
 import * as mutations from "./mutations";
+import * as mechanics from "./mechanics";
 
 export default class Ball{
   type = "Ball";

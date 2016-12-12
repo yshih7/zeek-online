@@ -14,11 +14,11 @@ export default class TreasureChest{
   }
 
   collide(board, playerPos, ownPos, dir){
-    const mutation = [];
+    let mutation = [];
     //Eat piece and increment score
     mutation.push(mutations.deletePiece(ownPos));
     mutation.push(mutations.move(playerPos, ownPos));
-    mutation.push(mutations.incrementScore(50));
+    mutation.push(mutations.incrementScore(1000));
     return mutation;
   }
 }

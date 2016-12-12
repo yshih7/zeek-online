@@ -1,5 +1,6 @@
 import * as mutations from "./mutations";
 import * as mechanics from "./mechanics";
+console.log(mechanics);
 
 export default class Apple {
   type = "Apple";
