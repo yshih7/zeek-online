@@ -7,9 +7,10 @@ export default class PurpleTulip{
     static sprite = "Tulip_Open.png";
     static description = "A carniverous flower that will eat Zeek if he passes by it. It can be fed an apple to close it for a while.";
     sprite = "Tulip_Open.png";
-    openState = true;
     digesting = false;
     timer = 10000;
+    timerOpen = 1000;
+    displayOpen = true;
     open;
 
     stateList = Object.freeze({
@@ -21,16 +22,21 @@ export default class PurpleTulip{
         eat_south : "Tulip_Eating_South.png",
         eat_west : "Tulip_Eating_West.png",
         open : "Tulip_Open.png",
-        rest : "Tulip_Rest.png"
+        rest : "Tulip_Resting.png"
     });
 
     constructor(open = true){
         this.open = open;
+        if(this.open){
+          this.sprite = this.stateList.open;
+        }else{
+          this.sprite = this.stateList.rest;
+        }
     }
 
     update(board, ownPos, dt){
         const mutation = [];
-    //Check if tulip is eating things
+        //Check if tulip is eating things
         if(this.digesting){
             this.timer -= dt;
             if(this.timer > 6000 && this.timer <= 10000){
@@ -41,44 +47,102 @@ export default class PurpleTulip{
                 this.sprite = this.stateList.digest_3;
             }else if(this.timer <= 0){
                 this.timer = 10;
-                this.sprite = this.stateList.open;
+                this.sprite = this.stateList.rest;
+                this.open = false;
                 this.digesting = false;
+                this.timerOpen = 1000;
             }
-      //End changing digesting state
+            //End changing digesting state
         }
 
-    //Check if opened tulips adjacent to player or apple
+        if(this.open){
+          this.timerOpen -= dt;
+        }
+
+        //Check if opened tulips adjacent to player or apple
         if(!this.digesting){
             if(ownPos[0] !== 0){
-                if(board[ownPos[0]-1][ownPos[1]] instanceof Player ||
-            board[ownPos[0]-1][ownPos[1]] instanceof Apple){
-                    mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));
-                    this.digesting = true;
-                    this.sprite = this.stateList.digest_1;
+                if(board[ownPos[0]-1][ownPos[1]] instanceof Player){
+                    if(!this.open){
+                      this.sprite = this.stateList.open;
+                      this.open = true;
+                    }else if(this.timerOpen <= 0){
+                      mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
                 }
             }
             if(ownPos[0] !== board.length){
-                if(board[ownPos[0]+1][ownPos[1]] instanceof Player ||
-            board[ownPos[0]+1][ownPos[1]] instanceof Apple){
-                    mutation.push(mutations.deletePiece([ownPos[0]+1, ownPos[1]]));
-                    this.digesting = true;
-                    this.sprite = this.stateList.digest_1;
+                if(board[ownPos[0]+1][ownPos[1]] instanceof Player){
+                    if(!this.open){
+                      this.sprite = this.stateList.open;
+                      this.open = true;
+                    }else if (this.timerOpen <= 0 && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0]+1, ownPos[1]]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
                 }
             }
             if(ownPos[1] !== 0){
-                if(board[ownPos[0]][ownPos[1]-1] instanceof Player ||
-            board[ownPos[0]][ownPos[1]-1] instanceof Apple){
-                    mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]-1]));
-                    this.digesting = true;
-                    this.sprite = this.stateList.digest_1;
+                if(board[ownPos[0]][ownPos[1]-1] instanceof Player){
+                    if(!this.open){
+                      this.sprite = this.stateList.open;
+                      this.open = true;
+                    }else if (this.timerOpen <= 0  && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]-1]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
                 }
             }
             if(ownPos[1] !== board.width){
-                if(board[ownPos[0]][ownPos[1]+1] instanceof Player ||
-            board[ownPos[0]][ownPos[1]+1] instanceof Apple){
-                    mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]+1]));
-                    this.digesting = true;
-                    this.sprite = this.stateList.digest_1;
+                if(board[ownPos[0]][ownPos[1]+1] instanceof Player){
+                    if(!this.open){
+                      this.sprite = this.stateList.open;
+                      this.open = true;
+                    }else if (this.timerOpen <= 0 && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]+1]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
+                }
+            }
+            if(ownPos[0] !== 0){
+                if(board[ownPos[0]-1][ownPos[1]] instanceof Apple){
+                    if (this.timerOpen <= 0 && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0]-1, ownPos[1]]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
+                }
+            }
+            if(ownPos[0] !== board.length){
+                if(board[ownPos[0]+1][ownPos[1]] instanceof Apple){
+                    if (this.timerOpen <= 0  && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0]+1, ownPos[1]]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
+                }
+            }
+            if(ownPos[1] !== 0){
+                if(board[ownPos[0]][ownPos[1]-1] instanceof Apple){
+                    if (this.timerOpen <= 0  && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]-1]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
+                }
+            }
+            if(ownPos[1] !== board.width){
+                if(board[ownPos[0]][ownPos[1]+1] instanceof Apple){
+                    if (this.timerOpen <= 0  && !this.digesting){
+                      mutation.push(mutations.deletePiece([ownPos[0], ownPos[1]+1]));
+                      this.digesting = true;
+                      this.sprite = this.stateList.digest_1;
+                    }
                 }
             }
         }
