@@ -9,6 +9,7 @@
             Name: <a route-href="route: play; params.bind: {mapId: map.id}">${map.name}</a><br>
             Created At: ${map.createdAt}<br>
             Tags: ${map.tags}<br>
+            <button if.bind="self" type="button" click.delegate="delete(map.id)">Delete</button>
         </p><br>
         <a if.bind="self" route-href="route: editProfile">Edit</a>
     </template>

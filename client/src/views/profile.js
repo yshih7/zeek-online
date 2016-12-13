@@ -67,4 +67,20 @@ export class profile {
 
     }
 
+    async delete(mapID) {
+        await maps.remove(mapID);
+
+        try {
+            this.maps = await maps.find({query: {"creator": this.loginName, "$sort" :{"createdAt":"-1"}}});
+
+            if (this.maps) {
+                for (var i = 0, len = this.maps.length; i < len; i++) {
+                    console.log(JSON.stringify(this.maps[i]));
+                }
+            }
+        } catch (err) {
+            console.log(JSON.stringify(err));
+        }
+    }
+
 }
